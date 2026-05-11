@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hotels & Accommodations | Top Travel Planners and Tours Zambia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+    section { padding: 100px 8%; }
+
+    #preloader {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+    }
+
+    .loader {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 8px solid rgba(255, 255, 255, 0.2);
+      border-top: 8px solid gold;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo h2 { color: #fff; font-size: 22px; font-weight: 700; }
+    .logo h2 span { color: gold; }
+
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav ul li a { color: #fff; font-size: 15px; transition: 0.4s; font-weight: 500; }
+    nav ul li a:hover, nav ul li a.active { color: gold; }
+
+    .header-btns { display: flex; gap: 15px; }
+
+    .btn {
+      padding: 13px 28px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.4s;
+      font-size: 14px;
+    }
+
+    .gold-btn { background: gold; color: #000; }
+    .gold-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+
+    .white-btn { background: #fff; color: #000; }
+    .white-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4); }
+
+    .hero {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      margin-top: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://lh3.googleusercontent.com/p/AF1QipP0z5VWHmuhRUsEAF4eGmaRZs_pckkY0LmG9n7g=w1200') center/cover;
+      z-index: -1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      top: 0;
+      left: 0;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-content h1 { font-size: 75px; line-height: 1.2; margin-bottom: 25px; animation: slideUp 1s ease; }
+    .hero-content p { font-size: 20px; max-width: 900px; margin: auto; margin-bottom: 40px; line-height: 1.8; animation: slideUp 1.2s ease; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(100px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .search-box {
+      width: 85%;
+      margin: auto;
+      margin-top: -80px;
+      background: #fff;
+      position: relative;
+      z-index: 10;
+      padding: 35px;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-card { display: flex; flex-direction: column; }
+    .search-card label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 14px; }
+    .search-card input, .search-card select { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Poppins', sans-serif; font-size: 14px; transition: 0.3s; }
+    .search-card input:focus, .search-card select:focus { outline: none; border-color: gold; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+
+    .search-btn {
+      background: gold;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      padding: 15px;
+      transition: 0.3s;
+      align-self: flex-end;
+    }
+
+    .search-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+
+    .section-title { text-align: center; margin-bottom: 60px; }
+    .section-title h2 { font-size: 50px; margin-bottom: 15px; color: #222; }
+    .section-title p { font-size: 18px; color: #666; }
+
+    .filter-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; gap: 20px; flex-wrap: wrap; }
+    .filter-group { display: flex; gap: 15px; flex-wrap: wrap; }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border: 2px solid #ddd;
+      background: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .filter-btn:hover, .filter-btn.active { border-color: gold; background: gold; color: #000; }
+
+    .sort-select { padding: 10px 20px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+    .sort-select:hover { border-color: gold; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+
+    .hotel-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: 0.4s;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .hotel-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); }
+    .hotel-card.show { opacity: 1; transform: translateY(0); }
+
+    .hotel-image { position: relative; height: 250px; overflow: hidden; background: #f0f0f0; }
+    .hotel-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+    .hotel-card:hover .hotel-image img { transform: scale(1.1); }
+
+    .hotel-badge { position: absolute; top: 15px; right: 15px; background: gold; color: #000; padding: 8px 15px; border-radius: 50px; font-weight: 600; font-size: 13px; }
+    .hotel-rating { position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.7); color: gold; padding: 8px 12px; border-radius: 50px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+
+    .hotel-content { padding: 25px; }
+    .hotel-name { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: #222; }
+    .hotel-location { color: #999; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 5px; }
+    .hotel-description { color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.6; height: 50px; overflow: hidden; }
+
+    .hotel-amenities { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+    .amenity-tag { background: #f0f0f0; padding: 5px 12px; border-radius: 20px; font-size: 12px; color: #666; }
+
+    .hotel-price { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #eee; }
+    .price-info { display: flex; flex-direction: column; }
+    .price-label { font-size: 12px; color: #999; margin-bottom: 3px; }
+    .price-value { font-size: 24px; font-weight: 700; color: gold; }
+
+    .book-btn { padding: 12px 25px; background: #000; color: #fff; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+    .book-btn:hover { background: gold; color: #000; }
+
+    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); animation: fadeIn 0.3s; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: slideDown 0.3s;
+    }
+
+    @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+    .close:hover { color: #000; }
+
+    .modal-title { font-size: 28px; margin-bottom: 20px; color: #222; }
+    .modal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px; }
+    .modal-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+    .modal-gallery img:hover { transform: scale(1.05); }
+
+    .modal-info { margin-bottom: 20px; }
+    .modal-info label { display: block; font-weight: 600; margin-bottom: 5px; color: #222; }
+    .modal-info p { color: #666; line-height: 1.8; margin-bottom: 15px; }
+
+    .modal-features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .feature-item { background: #f0f0f0; padding: 12px; border-radius: 8px; font-size: 14px; color: #666; }
+
+    .booking-form { background: #f9f9f9; padding: 20px; border-radius: 10px; margin-top: 20px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #222; }
+    .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 14px; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: gold; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+
+    .submit-btn { width: 100%; padding: 15px; background: gold; color: #000; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 16px; transition: 0.3s; }
+    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+
+    footer { background: #000; color: #fff; padding: 50px 8%; text-align: center; }
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
+    .footer-section h3 { color: gold; margin-bottom: 15px; font-size: 18px; }
+    .footer-section p, .footer-section a { color: #ccc; font-size: 14px; line-height: 1.8; transition: 0.3s; }
+.footer-section .contact-info { margin-top: 10px; font-size: 13px; }
+    .footer-section a:hover { color: gold; }
+    .footer-bottom { border-top: 1px solid #333; padding-top: 30px; text-align: center; }
+
+    @media (max-width: 768px) {
+      header { padding: 12px 4%; }
+      nav ul { gap: 15px; }
+      nav ul li a { font-size: 13px; }
+      .hero-content h1 { font-size: 40px; }
+      .hero-content p { font-size: 16px; }
+      .search-box { width: 95%; padding: 20px; grid-template-columns: 1fr; }
+      section { padding: 60px 4%; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+      .section-title h2 { font-size: 35px; }
+      .filter-section { flex-direction: column; align-items: flex-start; }
+      .modal-content { width: 95%; margin: 20% auto; padding: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 { font-size: 28px; }
+      .search-box { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .modal-features { grid-template-columns: 1fr; }
+      nav ul { gap: 10px; font-size: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="preloader"><div class="loader"></div></div>
+
+  <header>
+    <div class="logo"><h2>Top <span>Planners</span></h2></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="safaris.html">Safaris</a></li>
+        <li><a href="flights.html">Flights</a></li>
+        <li><a href="hotels.html" class="active">Hotels</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Find Your Perfect Stay</h1>
+      <p>Explore luxury hotels and affordable accommodations across Zambia</p>
+    </div>
+  </section>
+
+  <div class="search-box">
+    <div class="search-card">
+      <label>Check-in</label>
+      <input type="date" id="checkin" />
+    </div>
+    <div class="search-card">
+      <label>Check-out</label>
+      <input type="date" id="checkout" />
+    </div>
+    <div class="search-card">
+      <label>Guests</label>
+      <select id="guests">
+        <option>1 Guest</option>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4+ Guests</option>
+      </select>
+    </div>
+    <div class="search-card">
+      <label>Location</label>
+      <select id="location">
+        <option>All Locations</option>
+        <option>Livingstone</option>
+        <option>Lusaka</option>
+        <option>Ndola</option>
+        <option>South Luangwa</option>
+        <option>Lower Zambezi</option>
+      </select>
+    </div>
+    <button class="search-btn" onclick="searchHotels()">Search</button>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <h2>Available Hotels</h2>
+      <p>Choose from our curated selection of premium accommodations</p>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterHotels('all')">All Hotels</button>
+        <button class="filter-btn" onclick="filterHotels('luxury')">Luxury</button>
+        <button class="filter-btn" onclick="filterHotels('mid-range')">Mid-Range</button>
+        <button class="filter-btn" onclick="filterHotels('budget')">Budget</button>
+      </div>
+      <select class="sort-select" id="sortSelect" onchange="sortHotels()">
+        <option value="featured">Featured</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating">Highest Rated</option>
+      </select>
+    </div>
+
+    <div class="grid" id="hotelGrid"></div>
+  </section>
+
+  <div id="hotelModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 class="modal-title" id="modalHotelName"></h2>
+      <div class="modal-gallery" id="modalGallery"></div>
+      <div class="modal-info">
+        <label>Location</label>
+        <p id="modalLocation"></p>
+        <label>Description</label>
+        <p id="modalDescription"></p>
+        <label>Amenities</label>
+        <div id="modalAmenities" class="modal-features"></div>
+        <label>Price per Night</label>
+        <p style="font-size: 24px; color: gold; font-weight: 700;" id="modalPrice"></p>
+        <label>Rating</label>
+        <p id="modalRating" style="color: gold; font-weight: 600;"></p>
+      </div>
+      <div class="booking-form">
+        <h3 style="margin-bottom: 15px;">Book Your Stay</h3>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" />
+        </div>
+        <div class="form-group">
+          <label>Check-in Date</label>
+          <input type="date" />
+        </div>
+        <div class="form-group">
+          <label>Check-out Date</label>
+          <input type="date" />
+        </div>
+        <div class="form-group">
+          <label>Room Type</label>
+          <select>
+            <option>Single Room</option>
+            <option>Double Room</option>
+            <option>Suite</option>
+            <option>Deluxe Suite</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Special Requests</label>
+          <textarea style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif;" rows="4" placeholder="Any special requests?"></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitBooking()">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Top Travel Planners and Tours Zambia</h3>
+        <p>We are Zambia's leading tour and travel company, dedicated to creating unforgettable adventures across the beautiful landscapes of Zambia.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a><br>
+        <a href="destinations.html">Destinations</a><br>
+        <a href="packages.html">Packages</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p>📞 +260 77146218<br>
+        📧 res.toptravelplannerszambia@gmail.com<br>
+        📍  Lusaka, Zambia</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p>
+          <a href="#">Facebook</a><br>
+          <a href="#">Instagram</a><br>
+          <a href="#">Twitter</a><br>
+          <a href="#">WhatsApp</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Top Travel Planners and Tours Zambia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function() {
+      document.getElementById('preloader').style.display = 'none';
+    });
+
+    const hotels = [
+      {
+        id: 1,
+        name: 'Victoria Falls Safari Lodge',
+        location: 'Livingstone',
+        category: 'luxury',
+        price: 350,
+        rating: 4.8,
+        description: 'Luxurious lodge overlooking Victoria Falls with world-class amenities and spectacular views.',
+        images: ['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500', 'https://images.unsplash.com/photo-1571896349842-f88407ed43a0?w=500', 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=500'],
+        amenities: ['WiFi', 'Pool', 'Restaurant', 'Spa', 'Gym', 'Bar'],
+        fullDescription: 'Experience luxury at its finest at Victoria Falls Safari Lodge. This stunning property combines modern comfort with authentic African charm, offering breathtaking views of one of the world\'s most iconic natural wonders. Our expert staff ensures every moment of your stay is memorable.'
+      },
+      {
+        id: 2,
+        name: 'Lusaka Grand Hotel',
+        location: 'Lusaka',
+        category: 'luxury',
+        price: 280,
+        rating: 4.6,
+        description: 'Premium business hotel in the heart of Lusaka with state-of-the-art facilities.',
+        images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500', 'https://images.unsplash.com/photo-1571019613454-c02efd72f54d?w=500', 'https://images.unsplash.com/photo-1561501900-d3fee92d55bb?w=500'],
+        amenities: ['WiFi', 'Gym', 'Business Center', 'Restaurant', 'Bar', 'Conference Rooms'],
+        fullDescription: 'Lusaka Grand Hotel is the perfect choice for business travelers and leisure guests alike. Located in the prime business district, we offer world-class services and modern amenities.'
+      },
+      {
+        id: 3,
+        name: 'South Luangwa National Park Lodge',
+        location: 'South Luangwa',
+        category: 'mid-range',
+        price: 200,
+        rating: 4.5,
+        description: 'Scenic lodge within national park with incredible wildlife viewing opportunities.',
+        images: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500', 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=500', 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500'],
+        amenities: ['Safari Tours', 'Restaurant', 'Bar', 'WiFi', 'Nature Walks', 'Photography Tours'],
+        fullDescription: 'Immerse yourself in nature at South Luangwa National Park Lodge. Experience authentic safari adventures with expert guides and comfortable accommodations designed for wildlife enthusiasts.'
+      },
+      {
+        id: 4,
+        name: 'Ndola City Hotel',
+        location: 'Ndola',
+        category: 'mid-range',
+        price: 150,
+        rating: 4.3,
+        description: 'Comfortable mid-range hotel in Ndola with excellent service and competitive rates.',
+        images: ['https://images.unsplash.com/photo-1470093851033-69607e97aabc?w=500', 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=500', 'https://images.unsplash.com/photo-1435527173128-78a1e2e872da?w=500'],
+        amenities: ['WiFi', 'Restaurant', 'Bar', 'Room Service', 'Parking', 'Meeting Rooms'],
+        fullDescription: 'Ndola City Hotel offers comfortable and convenient accommodations in the heart of Ndola\'s business district. Perfect for corporate travelers and leisure visitors.'
+      },
+      {
+        id: 5,
+        name: 'Lower Zambezi River Lodge',
+        location: 'Lower Zambezi',
+        category: 'luxury',
+        price: 400,
+        rating: 4.9,
+        description: 'Exclusive riverside lodge offering premium safari and water adventure experiences.',
+        images: ['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500', 'https://images.unsplash.com/photo-1510332649841-f8ec266b6fbb?w=500'],
+        amenities: ['Private Safari', 'Boat Tours', 'Fishing', 'Fine Dining', 'Spa', 'Wildlife Photography'],
+        fullDescription: 'Experience ultimate luxury along the Lower Zambezi River. This exclusive lodge offers world-class accommodations and unforgettable safari adventures in one of Africa\'s most pristine wilderness areas.'
+      },
+      {
+        id: 6,
+        name: 'Budget Inn Livingstone',
+        location: 'Livingstone',
+        category: 'budget',
+        price: 80,
+        rating: 4.1,
+        description: 'Affordable and cheerful accommodation near Victoria Falls.',
+        images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500', 'https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?w=500', 'https://images.unsplash.com/photo-1465146072230-91cabc968266?w=500'],
+        amenities: ['WiFi', 'Shared Kitchen', 'Common Lounge', 'Tours Desk', 'Backpacker Friendly'],
+        fullDescription: 'Budget Inn Livingstone provides comfortable and affordable accommodations for backpackers and budget travelers. Great location near Victoria Falls and local attractions.'
+      },
+      {
+        id: 7,
+        name: 'Lusaka Eco Hotel',
+        location: 'Lusaka',
+        category: 'mid-range',
+        price: 160,
+        rating: 4.4,
+        description: 'Sustainable hotel with eco-friendly practices and modern comfort.',
+        images: ['https://images.unsplash.com/photo-1512207736139-ca32097e6b9a?w=500', 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500', 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500'],
+        amenities: ['Eco-Friendly', 'Organic Restaurant', 'WiFi', 'Gym', 'Garden', 'Meeting Rooms'],
+        fullDescription: 'Stay sustainably at Lusaka Eco Hotel. We combine environmental responsibility with comfortable accommodations, offering guests a guilt-free luxury experience.'
+      },
+      {
+        id: 8,
+        name: 'Ndola Premier Resort',
+        location: 'Ndola',
+        category: 'luxury',
+        price: 320,
+        rating: 4.7,
+        description: 'Upscale resort with comprehensive facilities and entertainment options.',
+        images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500', 'https://images.unsplash.com/photo-1571019613454-c02efd72f54d?w=500'],
+        amenities: ['Pool', 'Spa', 'Nightclub', 'Casino', 'Multiple Restaurants', 'Conference Center'],
+        fullDescription: 'Ndola Premier Resort is a premier destination for both business and leisure travelers, offering luxury accommodations and world-class entertainment facilities.'
+      },
+      {
+        id: 9,
+        name: 'Safari Budget Camp',
+        location: 'South Luangwa',
+        category: 'budget',
+        price: 90,
+        rating: 4.2,
+        description: 'Adventure-focused budget accommodation near wildlife reserves.',
+        images: ['https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500', 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500', 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=500'],
+        amenities: ['Safari Tours', 'Budget Cabins', 'Campfire', 'Guides Included', 'Adventure Activities'],
+        fullDescription: 'Safari Budget Camp offers authentic adventure experiences at affordable prices. Perfect for adventurous travelers wanting to explore Zambia\'s wildlife on a budget.'
+      }
+    ];
+
+    let filteredHotels = [...hotels];
+    let currentFilter = 'all';
+
+    function displayHotels(hotelList) {
+      const grid = document.getElementById('hotelGrid');
+      grid.innerHTML = '';
+
+      hotelList.forEach((hotel, index) => {
+        const card = document.createElement('div');
+        card.className = 'hotel-card';
+        card.innerHTML = `
+          <div class="hotel-image">
+            <img src="${hotel.images[0]}" alt="${hotel.name}">
+            <div class="hotel-badge">${hotel.category.charAt(0).toUpperCase() + hotel.category.slice(1)}</div>
+            <div class="hotel-rating">⭐ ${hotel.rating}</div>
+          </div>
+          <div class="hotel-content">
+            <h3 class="hotel-name">${hotel.name}</h3>
+            <div class="hotel-location">📍 ${hotel.location}</div>
+            <p class="hotel-description">${hotel.description}</p>
+            <div class="hotel-amenities">
+              ${hotel.amenities.slice(0, 3).map(a => `<span class="amenity-tag">${a}</span>`).join('')}
+            </div>
+            <div class="hotel-price">
+              <div class="price-info">
+                <span class="price-label">From</span>
+                <span class="price-value">$${hotel.price}</span>
+              </div>
+              <button class="book-btn" onclick="openModal(${hotel.id})">View Details</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+
+        setTimeout(() => {
+          card.classList.add('show');
+        }, index * 100);
+      });
+    }
+
+    function filterHotels(category) {
+      currentFilter = category;
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (category === 'all') {
+        filteredHotels = [...hotels];
+      } else {
+        filteredHotels = hotels.filter(h => h.category === category);
+      }
+
+      displayHotels(filteredHotels);
+    }
+
+    function sortHotels() {
+      const sortValue = document.getElementById('sortSelect').value;
+
+      if (sortValue === 'price-low') {
+        filteredHotels.sort((a, b) => a.price - b.price);
+      } else if (sortValue === 'price-high') {
+        filteredHotels.sort((a, b) => b.price - a.price);
+      } else if (sortValue === 'rating') {
+        filteredHotels.sort((a, b) => b.rating - a.rating);
+      }
+
+      displayHotels(filteredHotels);
+    }
+
+    function searchHotels() {
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      const guests = document.getElementById('guests').value;
+      const location = document.getElementById('location').value;
+
+      if (!checkin || !checkout) {
+        alert('Please select check-in and check-out dates');
+        return;
+      }
+
+      if (location === 'All Locations') {
+        filteredHotels = [...hotels];
+      } else {
+        filteredHotels = hotels.filter(h => h.location === location);
+      }
+
+      displayHotels(filteredHotels);
+      alert(`Search Results: ${filteredHotels.length} hotels found for ${guests}`);
+    }
+
+    function openModal(hotelId) {
+      const hotel = hotels.find(h => h.id === hotelId);
+      if (!hotel) return;
+
+      document.getElementById('modalHotelName').textContent = hotel.name;
+      document.getElementById('modalLocation').textContent = hotel.location;
+      document.getElementById('modalDescription').textContent = hotel.fullDescription;
+      document.getElementById('modalPrice').textContent = `$${hotel.price} per night`;
+      document.getElementById('modalRating').textContent = `⭐ ${hotel.rating}/5.0 Rating`;
+
+      const gallery = document.getElementById('modalGallery');
+      gallery.innerHTML = hotel.images.map(img => `<img src="${img}" alt="${hotel.name}">`).join('');
+
+      const amenities = document.getElementById('modalAmenities');
+      amenities.innerHTML = hotel.amenities.map(a => `<div class="feature-item">✓ ${a}</div>`).join('');
+
+      document.getElementById('hotelModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('hotelModal').style.display = 'none';
+    }
+
+    function submitBooking() {
+      alert('Thank you for your booking! We will contact you shortly to confirm your reservation.');
+      closeModal();
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('hotelModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    window.addEventListener('scroll', function() {
+      const cards = document.querySelectorAll('.hotel-card');
+      cards.forEach(card => {
+        const position = card.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+
+        if (position < screenHeight - 100) {
+          card.classList.add('show');
+        }
+      });
+    });
+
+    displayHotels(hotels);
+  </script>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/260771464228" class="whatsapp">
+  💬
+</a>
+
+<!-- BOOK NOW -->
+<a href="packages.html" class="book-now-btn">
+  Book<br>Now
+</a>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Top Travel Planners and Tours Zambia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background: #fff; color: #222; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; }
+section { padding: 100px 8%; }
+
+#preloader { position: fixed; width: 100%; height: 100vh; background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999; }
+.loader { width: 80px; height: 80px; border-radius: 50%; border: 8px solid rgba(255, 255, 255, 0.2); border-top: 8px solid gold; animation: spin 1s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+header { position: fixed; width: 100%; top: 0; left: 0; z-index: 999; padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo h2 { color: #fff; font-size: 22px; font-weight: 700; }
+.logo h2 span { color: gold; }
+nav ul { display: flex; gap: 28px; list-style: none; }
+nav ul li a { color: #fff; font-size: 15px; transition: 0.4s; font-weight: 500; }
+nav ul li a:hover, nav ul li a.active { color: gold; }
+.menu-icon { display: none; color: #fff; font-size: 24px; cursor: pointer; }
+.header-btns { display: flex; gap: 15px; }
+.btn-header { padding: 13px 28px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.4s; font-size: 14px; }
+.gold-btn { background: gold; color: #000; }
+.gold-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+.white-btn { background: #fff; color: #000; }
+.white-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4); }
+
+.hero { width: 100%; height: 100vh; position: relative; overflow: hidden; margin-top: 0; }
+.hero::before { content: ''; position: absolute; width: 100%; height: 100%; background: url('https://lh3.googleusercontent.com/p/AF1QipNMbE3WkZpU5aKCj0WCvwgF-i8A76wlcYh-8K0f=w1200') center/cover; z-index: -1; }
+.hero-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); top: 0; left: 0; }
+.hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; text-align: center; color: #fff; }
+.hero-content h1 { font-size: 75px; line-height: 1.2; margin-bottom: 25px; animation: slideUp 1s ease; }
+.hero-content p { font-size: 20px; max-width: 900px; margin: auto; margin-bottom: 40px; line-height: 1.8; animation: slideUp 1.2s ease; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
+
+.section-title { text-align: center; margin-bottom: 60px; }
+.section-title h2 { font-size: 50px; margin-bottom: 15px; color: #222; }
+.section-title p { font-size: 18px; color: #666; }
+
+.form-container { max-width: 600px; margin: 0 auto 40px; background: #f9f9f9; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 10px; font-weight: 600; color: #222; font-size: 14px; }
+.form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 14px; transition: 0.3s; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: gold; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+
+.button-group { display: flex; flex-direction: column; gap: 15px; align-items: center; margin-top: 30px; }
+.submit-btn { padding: 15px 50px; background: gold; color: #000; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 16px; transition: 0.3s; min-width: 250px; }
+.submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+.whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 15px 50px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; min-width: 250px; justify-content: center; }
+.whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); background: #1ebc57; }
+
+.info-box { background: #f9f9f9; padding: 40px; border-radius: 15px; margin-top: 40px; }
+.info-box h3 { font-size: 24px; margin-bottom: 30px; color: #222; }
+.contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.contact-item { text-align: center; }
+.contact-item i { font-size: 40px; color: gold; margin-bottom: 15px; }
+.contact-item h4 { font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #222; }
+.contact-item p { color: #666; font-size: 14px; line-height: 1.6; }
+
+.location-section { background: #f0f0f0; padding: 100px 8%; margin-top: 60px; }
+.location-section h2 { text-align: center; font-size: 40px; margin-bottom: 30px; color: #222; }
+.map-container { max-width: 800px; margin: auto; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); }
+.map-container iframe { width: 100%; height: 400px; border: none; }
+
+footer { background: #000; color: #fff; padding: 50px 8%; text-align: center; }
+.footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
+.footer-section h3 { color: gold; margin-bottom: 15px; font-size: 18px; }
+.footer-section p, .footer-section a { color: #ccc; font-size: 14px; line-height: 1.8; transition: 0.3s; }
+.footer-section a:hover { color: gold; }
+.footer-bottom { border-top: 1px solid #333; padding-top: 30px; text-align: center; }
+.footer-section .contact-info { margin-top: 10px; font-size: 13px; }
+
+@media (max-width: 768px) {
+  header { padding: 12px 4%; }
+  nav ul { gap: 15px; }
+  nav ul li a { font-size: 13px; }
+  .hero-content h1 { font-size: 40px; }
+  .hero-content p { font-size: 16px; }
+  section { padding: 60px 4%; }
+  .section-title h2 { font-size: 35px; }
+  .form-container { padding: 25px; }
+  .button-group { flex-direction: column; }
+  .submit-btn, .whatsapp-btn { min-width: 100%; }
+  .contact-info { grid-template-columns: 1fr; }
+
+  nav { position: absolute; top: 100%; left: 0; width: 100%; background: rgba(0, 0, 0, 0.9); display: none; }
+  nav ul { flex-direction: column; gap: 0; }
+  nav ul li { text-align: center; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  nav ul li a { font-size: 18px; }
+  .menu-icon { display: block; }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 28px; }
+  .hero-content p { font-size: 14px; }
+  nav ul { gap: 10px; font-size: 12px; }
+  .logo h2 { font-size: 18px; }
+  .form-container { padding: 20px; }
+  .submit-btn, .whatsapp-btn { padding: 12px 20px; }
+  .map-container iframe { height: 300px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <img src="images/images/WhatsApp Image 2026-05-03 at 16.54.03.jpeg" alt="Top Travel Planners and Tours Zambia Logo">
+    <h2>Top Travel Planners and Tours Zambia</h2>
+  </div>
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="safaris.html">Safaris</a></li>
+      <li><a href="flights.html">Flights</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Get In Touch</h1>
+    <p>We're here to help plan your perfect journey</p>
+  </div>
+</section>
+
+<!-- CONTACT FORM SECTION -->
+<section>
+  <div class="section-title">
+    <h2>Send Us a Message</h2>
+    <p>Fill out the form below and our travel experts will get back to you within 24 hours</p>
+  </div>
+
+  <div class="form-container">
+    <form id="contactForm">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="name" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <label>Subject *</label>
+        <input type="text" id="subject" placeholder="Subject" required>
+      </div>
+      <div class="form-group">
+        <label>Message *</label>
+        <textarea id="message" rows="6" placeholder="Tell us about your travel plans..." required></textarea>
+      </div>
+      <div class="button-group">
+        <button type="button" class="submit-btn" onclick="sendMessage()">Send Message</button>
+        <a class="whatsapp-btn" href="https://wa.me/260771464228" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <!-- CONTACT INFORMATION -->
+  <div class="info-box">
+    <h3>Contact Information</h3>
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <h4>Phone</h4>
+        <p><a href="tel:+260771464228" style="color: #666;">+260 771 464 228</a></p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <h4>Email</h4>
+        <p><a href="mailto:res.toptravelplanneszambia@gmail.com" style="color: #666;">res.toptravelplanneszambia@gmail.com</a></p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>Location</h4>
+        <p>Lusaka, Zambia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION MAP -->
+<section class="location-section">
+  <h2>Our Location</h2>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3710.2156847291445!2d28.283333!3d-15.3875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1940cd5620e5e7cd%3A0x0!2sLusaka%2C%20Zambia!5e0!3m2!1sen!2s!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- PHOTO ALBUMS -->
+
+<section class="photo-albums">
+
+  <div class="section-title">
+
+    <h2>Our Photo Albums</h2>
+
+    <p>Explore our travel memories and adventures.</p>
+
+  </div>
+
+  <div class="albums-grid">
+
+    <iframe src="https://photos.google.com/share/AF1QipNJm8k8uHWcdEsVLTTnxsbvHltiaPK-2AoOV3TDNPHByOCwq-DMMFTqJuyXerpLdg?key=QnRhZ3hOaHVJSTYzMzFoU3hJbzQ0ZEtkQ210bUtB/embed" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+
+    <iframe src="https://photos.google.com/share/AF1QipO7NhxDAKmcMXGBxbATAmkHusktGoMpH8hqyHSzjpae1rBpjUUmRtMWUi2SgsDqRA?key=cWhSRDM0QVFjcW9wV0d3RFU3SlpPRlBDanJ3MVBR/embed" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Top Travel Planners and Tours Zambia</h3>
+      <p>Luxury tourism and premium travel experiences across Africa and worldwide. We specialize in creating unforgettable journeys tailored to your preferences.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a><br>
+      <a href="destinations.html">Destinations</a><br>
+      <a href="packages.html">Packages</a><br>
+      <a href="safaris.html">Safaris</a>
+    </div>
+    <div class="footer-section">
+      <h3>Services</h3>
+      <a href="flights.html">Flight Booking</a><br>
+      <a href="hotels.html">Hotel Booking</a><br>
+      <a href="services.html">Visa Assistance</a><br>
+      <a href="safaris.html">Luxury Tours</a>
+    </div>
+    <div class="footer-section">
+      <h3>Contact Info</h3>
+      <p><strong>Phone:</strong> +260 771 464 228</p>
+      <p><strong>Email:</strong> res.toptravelplanneszambia@gmail.com</p>
+      <p><strong>Location:</strong> Lusaka, Zambia</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Top Travel Planners and Tours Zambia. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+}
+
+function sendMessage() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let subject = document.getElementById("subject").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || email === "" || subject === "" || message === "") {
+        alert("Please fill all required fields");
+        return;
+    }
+
+    alert("Thank you for your message! Our travel experts will contact you shortly at " + email);
+    document.getElementById("contactForm").reset();
+}
+
+// Preloader
+window.addEventListener("load", function() {
+    document.getElementById("preloader").style.display = "none";
+});
+</script>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/260771464228" class="whatsapp">
+  💬
+</a>
+
+<!-- BOOK NOW -->
+<a href="packages.html" class="book-now-btn">
+  Book<br>Now
+</a>
+
+</body>
+</html>

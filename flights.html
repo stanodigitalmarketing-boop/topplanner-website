@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flights | Top Travel Planners and Tours Zambia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: #fff; color: #222; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+    section { padding: 100px 8%; }
+
+    #preloader { position: fixed; width: 100%; height: 100vh; background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999; }
+    .loader { width: 80px; height: 80px; border-radius: 50%; border: 8px solid rgba(255, 255, 255, 0.2); border-top: 8px solid gold; animation: spin 1s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo h2 { color: #fff; font-size: 22px; font-weight: 700; }
+    .logo h2 span { color: gold; }
+
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav ul li a { color: #fff; font-size: 15px; transition: 0.4s; font-weight: 500; }
+    nav ul li a:hover, nav ul li a.active { color: gold; }
+
+    .header-btns { display: flex; gap: 15px; }
+    .btn { padding: 13px 28px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.4s; font-size: 14px; }
+    .gold-btn { background: gold; color: #000; }
+    .gold-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+    .white-btn { background: #fff; color: #000; }
+    .white-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4); }
+
+    .hero { width: 100%; height: 100vh; position: relative; overflow: hidden; margin-top: 0; }
+    .hero::before { content: ''; position: absolute; width: 100%; height: 100%; background: url('https://lh3.googleusercontent.com/p/AF1QipNpQqfNXW8fMdbu3ZjqKUH_KIxG9sdMWpV3wHAO=w1200') center/cover; z-index: -1; }
+    .hero-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); top: 0; left: 0; }
+    .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; text-align: center; color: #fff; }
+    .hero-content h1 { font-size: 75px; line-height: 1.2; margin-bottom: 25px; animation: slideUp 1s ease; }
+    .hero-content p { font-size: 20px; max-width: 900px; margin: auto; margin-bottom: 40px; line-height: 1.8; animation: slideUp 1.2s ease; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
+
+    .search-box {
+      width: 85%;
+      margin: auto;
+      margin-top: -80px;
+      background: #fff;
+      position: relative;
+      z-index: 10;
+      padding: 35px;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-card { display: flex; flex-direction: column; }
+    .search-card label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 14px; }
+    .search-card input, .search-card select { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Poppins', sans-serif; font-size: 14px; transition: 0.3s; }
+    .search-card input:focus, .search-card select:focus { outline: none; border-color: gold; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    .search-btn { background: gold; color: #000; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; padding: 15px; transition: 0.3s; align-self: flex-end; }
+    .search-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+
+    .section-title { text-align: center; margin-bottom: 60px; }
+    .section-title h2 { font-size: 50px; margin-bottom: 15px; color: #222; }
+    .section-title p { font-size: 18px; color: #666; }
+
+    .filter-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; gap: 20px; flex-wrap: wrap; }
+    .filter-group { display: flex; gap: 15px; flex-wrap: wrap; }
+    .filter-btn { padding: 10px 20px; border: 2px solid #ddd; background: #fff; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: 500; font-size: 14px; }
+    .filter-btn:hover, .filter-btn.active { border-color: gold; background: gold; color: #000; }
+    .sort-select { padding: 10px 20px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+    .sort-select:hover { border-color: gold; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+
+    .flight-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: 0.4s;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flight-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); }
+    .flight-card.show { opacity: 1; transform: translateY(0); }
+    .flight-header { background: linear-gradient(135deg, #000, #1a1a1a); color: #fff; padding: 20px; }
+    .airline-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: gold; }
+    .flight-number { font-size: 12px; color: #aaa; }
+    .flight-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+
+    .flight-route { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 15px; }
+    .airport { flex: 1; text-align: center; }
+    .time { font-size: 24px; font-weight: 700; color: #222; }
+    .airport-code { font-size: 12px; color: #999; margin-top: 5px; }
+    .flight-duration { flex: 0.5; text-align: center; }
+    .duration-line { height: 2px; background: gold; margin: 10px 0; }
+    .duration-text { font-size: 12px; color: #666; font-weight: 600; }
+
+    .flight-info { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+    .info-item { font-size: 13px; color: #666; }
+    .info-label { font-weight: 600; color: #222; margin-bottom: 3px; }
+
+    .flight-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+    .price-section { display: flex; flex-direction: column; }
+    .price-label { font-size: 12px; color: #999; margin-bottom: 3px; }
+    .price { font-size: 28px; font-weight: 700; color: gold; }
+    .book-btn { padding: 12px 25px; background: #000; color: #fff; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+    .book-btn:hover { background: gold; color: #000; }
+
+    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); animation: fadeIn 0.3s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: slideDown 0.3s;
+    }
+
+    @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+    .close:hover { color: #000; }
+    .modal-title { font-size: 24px; margin-bottom: 20px; color: #222; clear: both; }
+
+    .modal-flight-info { background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+    .modal-route { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 10px; }
+    .modal-airport { flex: 1; text-align: center; }
+    .modal-time { font-size: 20px; font-weight: 700; color: #000; }
+    .modal-code { font-size: 12px; color: #999; margin-top: 5px; }
+    .modal-duration-line { flex: 0.4; height: 2px; background: gold; }
+
+    .modal-details { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+    .detail-item { background: #f0f0f0; padding: 15px; border-radius: 8px; }
+    .detail-label { font-size: 12px; font-weight: 600; color: #666; margin-bottom: 5px; }
+    .detail-value { font-size: 16px; font-weight: 700; color: #222; }
+
+    .booking-form { background: #f9f9f9; padding: 20px; border-radius: 10px; margin-top: 20px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #222; }
+    .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 14px; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: gold; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    .submit-btn { width: 100%; padding: 15px; background: gold; color: #000; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 16px; transition: 0.3s; }
+    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+
+    footer { background: #000; color: #fff; padding: 50px 8%; text-align: center; }
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
+    .footer-section h3 { color: gold; margin-bottom: 15px; font-size: 18px; }
+    .footer-section p, .footer-section a { color: #ccc; font-size: 14px; line-height: 1.8; transition: 0.3s; }
+.footer-section .contact-info { margin-top: 10px; font-size: 13px; }
+    .footer-section a:hover { color: gold; }
+    .footer-bottom { border-top: 1px solid #333; padding-top: 30px; text-align: center; }
+
+    @media (max-width: 768px) {
+      header { padding: 12px 4%; }
+      nav ul { gap: 15px; }
+      nav ul li a { font-size: 13px; }
+      .hero-content h1 { font-size: 40px; }
+      .hero-content p { font-size: 16px; }
+      .search-box { width: 95%; padding: 20px; grid-template-columns: 1fr; }
+      section { padding: 60px 4%; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+      .section-title h2 { font-size: 35px; }
+      .filter-section { flex-direction: column; align-items: flex-start; }
+      .modal-content { width: 95%; margin: 20% auto; padding: 20px; }
+      .flight-route { gap: 10px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 { font-size: 28px; }
+      .search-box { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .modal-details { grid-template-columns: 1fr; }
+      nav ul { gap: 10px; font-size: 12px; }
+      .flight-route { flex-direction: column; gap: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="preloader"><div class="loader"></div></div>
+
+  <header>
+    <div class="logo"><h2>Top <span>Planners</span></h2></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="safaris.html">Safaris</a></li>
+        <li><a href="flights.html" class="active">Flights</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Find Your Perfect Flight</h1>
+      <p>Book flights to destinations across Zambia and beyond</p>
+    </div>
+  </section>
+
+  <div class="search-box">
+    <div class="search-card">
+      <label>From</label>
+      <select id="from">
+        <option>Lusaka (LUN)</option>
+        <option>Livingstone (LVI)</option>
+        <option>Ndola (NLA)</option>
+        <option>Johannesburg (JNB)</option>
+      </select>
+    </div>
+    <div class="search-card">
+      <label>To</label>
+      <select id="to">
+        <option>Livingstone (LVI)</option>
+        <option>Lusaka (LUN)</option>
+        <option>Ndola (NLA)</option>
+        <option>Johannesburg (JNB)</option>
+      </select>
+    </div>
+    <div class="search-card">
+      <label>Departure</label>
+      <input type="date" id="departure" />
+    </div>
+    <div class="search-card">
+      <label>Return</label>
+      <input type="date" id="return" />
+    </div>
+    <div class="search-card">
+      <label>Passengers</label>
+      <select id="passengers">
+        <option>1 Passenger</option>
+        <option>2 Passengers</option>
+        <option>3 Passengers</option>
+        <option>4+ Passengers</option>
+      </select>
+    </div>
+    <button class="search-btn" onclick="searchFlights()">Search Flights</button>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <h2>Available Flights</h2>
+      <p>Compare and book the best flight options for your journey</p>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterFlights('all')">All Flights</button>
+        <button class="filter-btn" onclick="filterFlights('direct')">Direct Only</button>
+        <button class="filter-btn" onclick="filterFlights('connecting')">Connecting</button>
+        <button class="filter-btn" onclick="filterFlights('budget')">Budget</button>
+      </div>
+      <select class="sort-select" id="sortSelect" onchange="sortFlights()">
+        <option value="featured">Featured</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="duration">Shortest Duration</option>
+        <option value="departure">Earliest Departure</option>
+      </select>
+    </div>
+
+    <div class="grid" id="flightGrid"></div>
+  </section>
+
+  <div id="flightModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 class="modal-title" id="modalAirline"></h2>
+      <div class="modal-flight-info">
+        <div class="modal-route">
+          <div class="modal-airport">
+            <div class="modal-time" id="modalDepartTime"></div>
+            <div class="modal-code" id="modalFromCode"></div>
+          </div>
+          <div class="modal-duration-line"></div>
+          <div class="modal-airport">
+            <div class="modal-time" id="modalArrivalTime"></div>
+            <div class="modal-code" id="modalToCode"></div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 10px; font-size: 12px; color: #666;" id="modalFlightDetails"></div>
+      </div>
+
+      <div class="modal-details">
+        <div class="detail-item">
+          <div class="detail-label">Flight Duration</div>
+          <div class="detail-value" id="modalDuration"></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Aircraft</div>
+          <div class="detail-value" id="modalAircraft"></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Seats Available</div>
+          <div class="detail-value" id="modalSeats"></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Baggage Allowance</div>
+          <div class="detail-value" id="modalBaggage"></div>
+        </div>
+      </div>
+
+      <div class="booking-form">
+        <h3 style="margin-bottom: 15px;">Passenger Information</h3>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="Enter your phone number" />
+        </div>
+        <div class="form-group">
+          <label>Passport Number</label>
+          <input type="text" placeholder="Enter your passport number" />
+        </div>
+        <div class="form-group">
+          <label>Seat Preference</label>
+          <select>
+            <option>Any Seat</option>
+            <option>Aisle</option>
+            <option>Window</option>
+            <option>Middle</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Special Requests</label>
+          <textarea style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif;" rows="3" placeholder="Any special requests?"></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitBooking()">Complete Booking</button>
+      </div>
+    </div>
+  </div>
+
+<!-- PHOTO ALBUMS -->
+
+<section class="photo-albums">
+
+  <div class="section-title">
+
+    <h2>Our Photo Albums</h2>
+
+    <p>Explore our travel memories and adventures.</p>
+
+  </div>
+
+  <div class="albums-grid">
+
+    <iframe src="https://photos.google.com/share/AF1QipNJm8k8uHWcdEsVLTTnxsbvHltiaPK-2AoOV3TDNPHByOCwq-DMMFTqJuyXerpLdg?key=QnRhZ3hOaHVJSTYzMzFoU3hJbzQ0ZEtkQ210bUtB/embed" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+
+    <iframe src="https://photos.google.com/share/AF1QipO7NhxDAKmcMXGBxbATAmkHusktGoMpH8hqyHSzjpae1rBpjUUmRtMWUi2SgsDqRA?key=cWhSRDM0QVFjcW9wV0d3RFU3SlpPRlBDanJ3MVBR/embed" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+
+  </div>
+
+</section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Top Travel Planners and Tours Zambia</h3>
+        <p>We are Zambia's leading tour and travel company, dedicated to creating unforgettable adventures across the beautiful landscapes of Zambia.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a><br>
+        <a href="destinations.html">Destinations</a><br>
+        <a href="packages.html">Packages</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p>📞 +260 212 345 678<br>
+        📧 info@topplanners.zm<br>
+        📍 123 Freedom Avenue, Lusaka, Zambia</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p>
+          <a href="#">Facebook</a><br>
+          <a href="#">Instagram</a><br>
+          <a href="#">Twitter</a><br>
+          <a href="#">WhatsApp</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Top Travel Planners and Tours Zambia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function() { document.getElementById('preloader').style.display = 'none'; });
+
+    const flights = [
+      { id: 1, airline: 'Zambia Airways', flightNumber: 'ZA 101', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '08:00', arrivalTime: '09:30', duration: '1h 30m', date: '2026-05-15', type: 'direct', aircraft: 'Airbus A320', seats: 142, baggage: '25kg', price: 150, category: 'direct' },
+      { id: 2, airline: 'Proflight Zambia', flightNumber: 'PF 201', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '10:00', arrivalTime: '12:15', duration: '2h 15m', date: '2026-05-15', type: 'connecting', aircraft: 'Boeing 737', seats: 89, baggage: '20kg', price: 120, category: 'budget' },
+      { id: 3, airline: 'Zambia Airways', flightNumber: 'ZA 105', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '14:30', arrivalTime: '15:45', duration: '1h 15m', date: '2026-05-15', type: 'direct', aircraft: 'Airbus A319', seats: 156, baggage: '25kg', price: 160, category: 'direct' },
+      { id: 4, airline: 'Tropical Air', flightNumber: 'TA 501', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '06:00', arrivalTime: '07:30', duration: '1h 30m', date: '2026-05-15', type: 'direct', aircraft: 'Cessna 208', seats: 8, baggage: '10kg', price: 200, category: 'direct' },
+      { id: 5, airline: 'Proflight Zambia', flightNumber: 'PF 203', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '16:45', arrivalTime: '19:00', duration: '2h 15m', date: '2026-05-15', type: 'connecting', aircraft: 'Boeing 737', seats: 120, baggage: '20kg', price: 130, category: 'budget' },
+      { id: 6, airline: 'Lusaka City Airlines', flightNumber: 'LC 301', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '11:00', arrivalTime: '12:45', duration: '1h 45m', date: '2026-05-15', type: 'direct', aircraft: 'ATR 72', seats: 68, baggage: '15kg', price: 125, category: 'budget' },
+      { id: 7, airline: 'Zambia Airways', flightNumber: 'ZA 110', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '18:00', arrivalTime: '19:30', duration: '1h 30m', date: '2026-05-15', type: 'direct', aircraft: 'Airbus A320', seats: 145, baggage: '25kg', price: 155, category: 'direct' },
+      { id: 8, airline: 'Tropical Air', flightNumber: 'TA 505', from: 'Lusaka (LUN)', to: 'Livingstone (LVI)', departTime: '13:00', arrivalTime: '14:30', duration: '1h 30m', date: '2026-05-15', type: 'direct', aircraft: 'Cessna 208', seats: 12, baggage: '10kg', price: 210, category: 'direct' }
+    ];
+
+    let filteredFlights = [...flights];
+    let currentFilter = 'all';
+
+    function displayFlights(flightList) {
+      const grid = document.getElementById('flightGrid');
+      grid.innerHTML = '';
+      flightList.forEach((flight, index) => {
+        const card = document.createElement('div');
+        card.className = 'flight-card';
+        card.innerHTML = `
+          <div class="flight-header">
+            <div class="airline-name">${flight.airline}</div>
+            <div class="flight-number">${flight.flightNumber}</div>
+          </div>
+          <div class="flight-content">
+            <div class="flight-route">
+              <div class="airport">
+                <div class="time">${flight.departTime}</div>
+                <div class="airport-code">${flight.from.split('(')[1].replace(')', '')}</div>
+              </div>
+              <div class="flight-duration">
+                <div class="duration-line"></div>
+                <div class="duration-text">${flight.duration}</div>
+              </div>
+              <div class="airport">
+                <div class="time">${flight.arrivalTime}</div>
+                <div class="airport-code">${flight.to.split('(')[1].replace(')', '')}</div>
+              </div>
+            </div>
+            <div class="flight-info">
+              <div class="info-item">
+                <div class="info-label">Aircraft</div>
+                <div>${flight.aircraft}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Baggage</div>
+                <div>${flight.baggage}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Seats Available</div>
+                <div>${flight.seats}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Type</div>
+                <div>${flight.type.charAt(0).toUpperCase() + flight.type.slice(1)}</div>
+              </div>
+            </div>
+            <div class="flight-bottom">
+              <div class="price-section">
+                <span class="price-label">From</span>
+                <span class="price">$${flight.price}</span>
+              </div>
+              <button class="book-btn" onclick="openModal(${flight.id})">Select Flight</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+        setTimeout(() => { card.classList.add('show'); }, index * 100);
+      });
+    }
+
+    function filterFlights(category) {
+      currentFilter = category;
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      if (category === 'all') {
+        filteredFlights = [...flights];
+      } else {
+        filteredFlights = flights.filter(f => f.category === category || (category === 'connecting' && f.type === 'connecting'));
+      }
+      displayFlights(filteredFlights);
+    }
+
+    function sortFlights() {
+      const sortValue = document.getElementById('sortSelect').value;
+      if (sortValue === 'price-low') {
+        filteredFlights.sort((a, b) => a.price - b.price);
+      } else if (sortValue === 'price-high') {
+        filteredFlights.sort((a, b) => b.price - a.price);
+      } else if (sortValue === 'duration') {
+        filteredFlights.sort((a, b) => { const aDuration = parseInt(a.duration); const bDuration = parseInt(b.duration); return aDuration - bDuration; });
+      } else if (sortValue === 'departure') {
+        filteredFlights.sort((a, b) => a.departTime.localeCompare(b.departTime));
+      }
+      displayFlights(filteredFlights);
+    }
+
+    function searchFlights() {
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const departure = document.getElementById('departure').value;
+      const passengers = document.getElementById('passengers').value;
+      if (!departure) {
+        alert('Please select a departure date');
+        return;
+      }
+      filteredFlights = flights.filter(f => f.from === from && f.to === to);
+      displayFlights(filteredFlights);
+      alert(`Search Results: ${filteredFlights.length} flights found for ${passengers}`);
+    }
+
+    function openModal(flightId) {
+      const flight = flights.find(f => f.id === flightId);
+      if (!flight) return;
+      document.getElementById('modalAirline').textContent = `${flight.airline} - ${flight.flightNumber}`;
+      document.getElementById('modalDepartTime').textContent = flight.departTime;
+      document.getElementById('modalFromCode').textContent = flight.from;
+      document.getElementById('modalArrivalTime').textContent = flight.arrivalTime;
+      document.getElementById('modalToCode').textContent = flight.to;
+      document.getElementById('modalFlightDetails').textContent = `${flight.duration} • ${flight.type.charAt(0).toUpperCase() + flight.type.slice(1)}`;
+      document.getElementById('modalDuration').textContent = flight.duration;
+      document.getElementById('modalAircraft').textContent = flight.aircraft;
+      document.getElementById('modalSeats').textContent = flight.seats;
+      document.getElementById('modalBaggage').textContent = flight.baggage;
+      document.getElementById('flightModal').style.display = 'block';
+    }
+
+    function closeModal() { document.getElementById('flightModal').style.display = 'none'; }
+    function submitBooking() { alert('Thank you for your booking! We will contact you shortly to confirm your flight reservation.'); closeModal(); }
+    window.onclick = function(event) { const modal = document.getElementById('flightModal'); if (event.target == modal) { modal.style.display = 'none'; } }
+    window.addEventListener('scroll', function() {
+      const cards = document.querySelectorAll('.flight-card');
+      cards.forEach(card => {
+        const position = card.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+        if (position < screenHeight - 100) { card.classList.add('show'); }
+      });
+    });
+
+    displayFlights(flights);
+  </script>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/260771464228" class="whatsapp">
+  💬
+</a>
+
+<!-- BOOK NOW -->
+<a href="packages.html" class="book-now-btn">
+  Book<br>Now
+</a>
+
+</body>
+</html>

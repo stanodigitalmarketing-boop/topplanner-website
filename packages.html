@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Premium Lusaka City Tours and Zambia vacation packages">
+
+<title>Premium Tour Packages | Top Travel Planners & Tours Zambia</title>
+
+<!-- GOOGLE FONTS -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fff;
+    color:#222;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+section{
+    padding:100px 8%;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    color:#fff;
+    font-size:28px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#d4af37;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav ul li a{
+    color:#fff;
+    font-size:15px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#d4af37;
+}
+
+.header-btn{
+    padding:12px 28px;
+    border-radius:40px;
+    background:#d4af37;
+    color:#000;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.header-btn:hover{
+    background:#fff;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    width:100%;
+    height:100vh;
+    position:relative;
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=2070&auto=format&fit=crop')
+    center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero-content{
+    max-width:900px;
+    color:#fff;
+}
+
+.hero-content h1{
+    font-size:75px;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.hero-content p{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 35px;
+    border-radius:50px;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.gold-btn{
+    background:#d4af37;
+    color:#000;
+}
+
+.white-btn{
+    background:#fff;
+    color:#000;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* =========================
+SECTION TITLE
+========================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:50px;
+    margin-bottom:15px;
+    color:#0d5c4f;
+}
+
+.section-title p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    color:#666;
+}
+
+/* =========================
+FEATURED PACKAGES
+========================= */
+
+.package-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.package-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 35px rgba(0,0,0,0.1);
+    transition:0.4s;
+}
+
+.package-card:hover{
+    transform:translateY(-10px);
+}
+
+.package-card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.package-content{
+    padding:30px;
+}
+
+.package-content h3{
+    font-size:28px;
+    margin-bottom:15px;
+    color:#0d5c4f;
+}
+
+.package-content p{
+    line-height:1.8;
+    color:#666;
+    margin-bottom:20px;
+}
+
+.price{
+    font-size:30px;
+    color:#d4af37;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.card-btn{
+    display:inline-block;
+    padding:14px 30px;
+    border-radius:40px;
+    background:#0d5c4f;
+    color:#fff;
+    transition:0.3s;
+}
+
+.card-btn:hover{
+    background:#d4af37;
+    color:#000;
+}
+
+/* =========================
+LUSAKA CITY TOURS
+========================= */
+
+.lusaka-tours{
+    background:#f7f7f7;
+}
+
+.lusaka-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.lusaka-header img{
+    width:120px;
+    margin:auto;
+    margin-bottom:20px;
+}
+
+.lusaka-header h2{
+    font-size:70px;
+    line-height:1;
+    color:#006b5b;
+    font-weight:800;
+}
+
+.lusaka-header p{
+    font-size:28px;
+    color:#006b5b;
+    margin-top:15px;
+}
+
+.lusaka-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.lusaka-card{
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+    min-height:520px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.15);
+}
+
+.lusaka-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.lusaka-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(rgba(0,0,0,0.2),rgba(0,90,70,0.88));
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+}
+
+.option-number{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:120px;
+    color:rgba(255,255,255,0.9);
+    font-weight:800;
+}
+
+.option-text{
+    position:absolute;
+    top:150px;
+    right:30px;
+    color:#fff;
+    font-size:22px;
+}
+
+.lusaka-overlay h3{
+    color:#fff;
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.tour-price{
+    color:#ffdd57;
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.lusaka-overlay h4{
+    color:#fff;
+    margin-bottom:15px;
+}
+
+.lusaka-features{
+    list-style:none;
+    margin-bottom:25px;
+}
+
+.lusaka-features li{
+    color:#fff;
+    margin-bottom:10px;
+    line-height:1.5;
+}
+
+.lusaka-features li::before{
+    content:"• ";
+    color:#ffdd57;
+}
+
+.lusaka-btn{
+    width:fit-content;
+    padding:14px 30px;
+    background:#ffdd57;
+    color:#000;
+    border-radius:40px;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.lusaka-btn:hover{
+    background:#fff;
+}
+
+.lusaka-note{
+    margin-top:40px;
+    background:#ffdd57;
+    padding:16px 25px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:700;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* =========================
+CTA
+========================= */
+
+.cta{
+    background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop')
+    center/cover no-repeat;
+
+    color:#fff;
+    text-align:center;
+}
+
+.cta h2{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.cta p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+/* =========================
+PHOTO ALBUMS
+========================= */
+
+.albums-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    background:#111;
+    color:#fff;
+    padding:80px 8% 30px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer-box h3{
+    margin-bottom:20px;
+    color:#d4af37;
+}
+
+.footer-box p,
+.footer-box a{
+    color:#ccc;
+    line-height:2;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:50px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:25px;
+    color:#aaa;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+    header{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero-content h1{
+        font-size:50px;
+    }
+}
+
+@media(max-width:768px){
+
+    section{
+        padding:80px 5%;
+    }
+
+    .hero-content h1{
+        font-size:38px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .section-title h2{
+        font-size:35px;
+    }
+
+    .lusaka-header h2{
+        font-size:45px;
+    }
+
+    .lusaka-header p{
+        font-size:18px;
+    }
+
+    .option-number{
+        font-size:90px;
+    }
+
+    .option-text{
+        top:110px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:60px 5%;
+    }
+
+    .hero-content h1{
+        font-size:28px;
+    }
+
+    .hero-content p{
+        font-size:14px;
+    }
+
+    .section-title h2{
+        font-size:24px;
+    }
+
+    .lusaka-header h2{
+        font-size:32px;
+    }
+
+    .lusaka-header p{
+        font-size:14px;
+    }
+
+    .option-number{
+        font-size:60px;
+    }
+
+    .option-text{
+        top:70px;
+        font-size:12px;
+    }
+
+    .tour-price{
+        font-size:13px;
+    }
+
+    .lusaka-features li{
+        font-size:12px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    section{
+        padding:50px 4%;
+    }
+
+    header{
+        padding:15px 4%;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    nav ul{
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    nav ul li a{
+        font-size:12px;
+    }
+
+    .header-btn{
+        padding:10px 20px;
+        font-size:12px;
+    }
+
+    .hero-content h1{
+        font-size:22px;
+    }
+
+    .hero-content p{
+        font-size:13px;
+    }
+
+    .section-title h2{
+        font-size:20px;
+    }
+
+    .section-title p{
+        font-size:12px;
+    }
+
+    .lusaka-header h2{
+        font-size:24px;
+    }
+
+    .lusaka-header p{
+        font-size:12px;
+    }
+
+    .lusaka-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .option-number{
+        font-size:45px;
+    }
+
+    .option-text{
+        top:50px;
+        font-size:10px;
+    }
+
+    .lusaka-overlay h3{
+        font-size:16px;
+    }
+
+    .tour-price{
+        font-size:12px;
+    }
+
+    .lusaka-overlay h4{
+        font-size:11px;
+    }
+
+    .lusaka-features li{
+        font-size:11px;
+    }
+
+    .lusaka-btn{
+        padding:10px 20px;
+        font-size:12px;
+    }
+
+    .lusaka-note{
+        font-size:11px;
+    }
+
+    .cta h2{
+        font-size:28px;
+    }
+
+    .cta p{
+        font-size:13px;
+    }
+
+    .btn{
+        padding:10px 20px;
+        font-size:12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">
+TOP <span>TRAVEL</span>
+</div>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="destinations.html">Destinations</a></li>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#lusaka-tours">Tours</a></li>
+<li><a href="safaris.html">Safaris</a></li>
+<li><a href="hotels.html">Hotels</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+
+<a href="contact.html" class="header-btn">
+Book Now
+</a>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>Luxury Zambia Tours</h1>
+
+    <p>
+      Experience premium safaris, luxury lodges,
+      wildlife adventures, and unforgettable city tours across Zambia
+    </p>
+
+  </div>
+
+</section>
+
+<style>
+.hero{
+    background-image: url('images/images/FB_IMG_1736795213409.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+}
+</style>
+</p>
+
+<div class="hero-buttons">
+
+<a href="#packages" class="btn gold-btn">
+Explore Packages
+</a>
+
+<a href="contact.html" class="btn white-btn">
+Contact Us
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURED PACKAGES -->
+
+<section id="packages">
+
+<div class="section-title">
+
+<h2>Featured Packages</h2>
+
+<p>
+Luxury travel experiences designed for unforgettable adventures in Zambia.
+</p>
+
+</div>
+
+<div class="package-grid">
+
+<div class="package-card">
+
+<img src="images/images/Gamedrive 10.jpg">
+
+<div class="package-content">
+
+<h3>Victoria Falls Escape</h3>
+
+<p>
+Luxury stay, guided tours, sunset cruises and unforgettable adventures.
+</p>
+
+<div class="price">
+$850
+</div>
+
+<a href="contact.html" class="card-btn">
+Book Now
+</a>
+
+</div>
+
+</div>
+
+<div class="package-card">
+
+<img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?q=80&w=2070&auto=format&fit=crop">
+
+<div class="package-content">
+
+<h3>South Luangwa Safari</h3>
+
+<p>
+Experience Zambia’s best wildlife safaris and luxury bush camps.
+</p>
+
+<div class="price">
+$1,500
+</div>
+
+<a href="safaris.html" class="card-btn">
+View Safari
+</a>
+
+</div>
+
+</div>
+
+<div class="package-card">
+
+<img src="https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=2070&auto=format&fit=crop">
+
+<div class="package-content">
+
+<h3>Lower Zambezi Retreat</h3>
+
+<p>
+Luxury riverside lodges, canoe safaris and premium relaxation.
+</p>
+
+<div class="price">
+$1,200
+</div>
+
+<a href="hotels.html" class="card-btn">
+View Stay
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LUSAKA CITY TOURS -->
+
+<section class="lusaka-tours" id="lusaka-tours">
+
+<div class="lusaka-header">
+
+<img src="images/images/IMG-20240322-WA0176.jpg">
+
+<h2>
+LUSAKA <br>
+CITY TOURS
+</h2>
+
+<p>EXPLORE LUSAKA</p>
+
+</div>
+
+<div class="lusaka-grid">
+
+<!-- CARD 1 -->
+
+<div class="lusaka-card">
+
+<img src="images/images/IMG-20240322-WA0102.jpg" loading="lazy" alt="Lusaka Cultural Tour">
+
+<div class="option-number">1</div>
+<div class="option-text">OPTION</div>
+
+<div class="lusaka-overlay">
+
+<h3>Lusaka Cultural Tour</h3>
+
+<div class="tour-price">
+USD 135 Per Person
+</div>
+
+<h4>INCLUDES:</h4>
+
+<ul class="lusaka-features">
+<li><i class="fas fa-check-circle"></i> Lusaka Museum</li>
+<li><i class="fas fa-check-circle"></i> Kabwata Cultural Village</li>
+<li><i class="fas fa-check-circle"></i> Market Tour</li>
+<li><i class="fas fa-check-circle"></i> Professional Driver Guide</li>
+<li><i class="fas fa-check-circle"></i> Return Transfers</li>
+<li><i class="fas fa-check-circle"></i> Bottle of Water</li>
+</ul>
+
+<a href="contact.html" class="lusaka-btn">
+Book Tour
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="lusaka-card">
+
+<img src="images/images/IMG-20240322-WA0176.jpg" loading="lazy" alt="Historical Lusaka Tour">
+
+<div class="option-number">2</div>
+<div class="option-text">OPTION</div>
+
+<div class="lusaka-overlay">
+
+<h3>Historical Lusaka Tour</h3>
+
+<div class="tour-price">
+USD 150 Per Person
+</div>
+
+<h4>INCLUDES:</h4>
+
+<ul class="lusaka-features">
+<li><i class="fas fa-check-circle"></i> Embassy Memorial Park</li>
+<li><i class="fas fa-check-circle"></i> Oliver Tambo House</li>
+<li><i class="fas fa-check-circle"></i> Lunch Included</li>
+<li><i class="fas fa-check-circle"></i> Professional Guide</li>
+<li><i class="fas fa-check-circle"></i> Return Transfers</li>
+</ul>
+
+<a href="contact.html" class="lusaka-btn">
+Book Tour
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="lusaka-card">
+
+<img src="images/images/IMG-20240322-WA0200.jpg" loading="lazy" alt="Chaminuka Safari">
+
+<div class="option-number">3</div>
+<div class="option-text">OPTION</div>
+
+<div class="lusaka-overlay">
+
+<h3>Chaminuka Safari</h3>
+
+<div class="tour-price">
+USD 195 Per Person
+</div>
+
+<h4>INCLUDES:</h4>
+
+<ul class="lusaka-features">
+<li><i class="fas fa-check-circle"></i> Game Drive</li>
+<li><i class="fas fa-check-circle"></i> Boating</li>
+<li><i class="fas fa-check-circle"></i> Horse Riding</li>
+<li><i class="fas fa-check-circle"></i> Bush Walks</li>
+<li><i class="fas fa-check-circle"></i> Fishing</li>
+<li><i class="fas fa-check-circle"></i> Professional Guide</li>
+</ul>
+
+<a href="contact.html" class="lusaka-btn">
+Book Tour
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="lusaka-card">
+
+<img src="images/images/IMG-20240322-WA0202.jpg" loading="lazy" alt="Lilayi Lodge Safari">
+
+<div class="option-number">4</div>
+<div class="option-text">OPTION</div>
+
+<div class="lusaka-overlay">
+
+<h3>Lilayi Lodge Safari</h3>
+
+<div class="tour-price">
+USD 140 Per Person
+</div>
+
+<h4>INCLUDES:</h4>
+
+<ul class="lusaka-features">
+<li><i class="fas fa-check-circle"></i> Luxury Lodge</li>
+<li><i class="fas fa-check-circle"></i> Game Drives</li>
+<li><i class="fas fa-check-circle"></i> Lunch Included</li>
+<li><i class="fas fa-check-circle"></i> Professional Guide</li>
+<li><i class="fas fa-check-circle"></i> Return Transfers</li>
+</ul>
+
+<a href="contact.html" class="lusaka-btn">
+Book Tour
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 5 -->
+
+<div class="lusaka-card">
+
+<img src="images/images/IMG-20240322-WA0210.jpg" loading="lazy" alt="Lusaka National Park">
+
+<div class="option-number">5</div>
+<div class="option-text">OPTION</div>
+
+<div class="lusaka-overlay">
+
+<h3>Lusaka National Park</h3>
+
+<div class="tour-price">
+USD 150 Per Person
+</div>
+
+<h4>INCLUDES:</h4>
+
+<ul class="lusaka-features">
+<li><i class="fas fa-check-circle"></i> Game Drive</li>
+<li><i class="fas fa-check-circle"></i> Elephant Orphanage</li>
+<li><i class="fas fa-check-circle"></i> Park Fees</li>
+<li><i class="fas fa-check-circle"></i> Professional Guide</li>
+<li><i class="fas fa-check-circle"></i> Return Transfers</li>
+</ul>
+
+<a href="contact.html" class="lusaka-btn">
+Book Tour
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="lusaka-note">
+Kindly note that all tours require a minimum of 2 people.
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>
+Create Your Custom Tour
+</h2>
+
+<p>
+Let us design a personalized luxury journey for your unforgettable Zambia adventure.
+</p>
+
+<a href="contact.html" class="btn gold-btn">
+Contact Our Experts
+</a>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div class="footer-box">
+
+<h3>Top Travel Planners and Tours Zambia</h3>
+
+<p>
+Luxury Safaris, Premium Tours,
+Hotels, Flights & Adventures Across Zambia.
+</p>
+
+<p><strong>Email:</strong> res.toptravelplannerszambia@gmail.com</p>
+
+<p><strong>Phone:</strong> +260 771 464 228</p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Quick Links</h3>
+
+<p><a href="index.html">Home</a></p>
+<p><a href="#packages">Packages</a></p>
+<p><a href="#lusaka-tours">Tours</a></p>
+<p><a href="contact.html">Contact</a></p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Contact</h3>
+
+<p>📍 Lusaka, Zambia</p>
+<p>📞 +260 771 464 228</p>
+<p>✉ res.toptravelplannerszambia@gmail.com</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 Top Travel Planners & Tours Zambia
+
+</div>
+
+</footer>
+
+</body>
+</html>
