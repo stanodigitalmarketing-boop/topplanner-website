@@ -1,309 +1,1051 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Safaris | Top Travel Planners and Tours Zambia</title>
 
+<title>Luxury Safaris Zambia | Top Travel Planners & Tours Zambia</title>
+
+<!-- GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-body { font-family: 'Poppins', sans-serif; background: #fff; color: #222; overflow-x: hidden; }
-img { max-width: 100%; display: block; }
-a { text-decoration: none; }
-section { padding: 100px 8%; }
 
-#preloader { position: fixed; width: 100%; height: 100vh; background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999; }
-.loader { width: 80px; height: 80px; border-radius: 50%; border: 8px solid rgba(255, 255, 255, 0.2); border-top: 8px solid gold; animation: spin 1s linear infinite; }
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-header { position: fixed; width: 100%; top: 0; left: 0; z-index: 999; padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); }
-.logo { display: flex; align-items: center; gap: 12px; }
-.logo h2 { color: #fff; font-size: 22px; font-weight: 700; }
-.logo h2 span { color: gold; }
-nav ul { display: flex; gap: 28px; list-style: none; }
-nav ul li a { color: #fff; font-size: 15px; transition: 0.4s; font-weight: 500; }
-nav ul li a:hover, nav ul li a.active { color: gold; }
-.header-btns { display: flex; gap: 15px; }
-.btn-header { padding: 13px 28px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.4s; font-size: 14px; }
-.gold-btn { background: gold; color: #000; }
-.gold-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
-.white-btn { background: #fff; color: #000; }
-.white-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4); }
-
-.hero { width: 100%; height: 80vh; position: relative; overflow: hidden; margin-top: 0; }
-.hero::before { content: ''; position: absolute; width: 100%; height: 100%; background: url('https://lh3.googleusercontent.com/p/AF1QipPjei2S4RUx02xNw6iJYrKnKPxIBL5elJ8MFluP=w1200') center/cover; z-index: -1; }
-.hero-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); top: 0; left: 0; }
-.hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; text-align: center; color: #fff; }
-.hero-content h1 { font-size: 75px; line-height: 1.2; margin-bottom: 25px; animation: slideUp 1s ease; }
-.hero-content p { font-size: 20px; max-width: 900px; margin: auto; margin-bottom: 40px; line-height: 1.8; animation: slideUp 1.2s ease; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
-
-.section-title { text-align: center; margin-bottom: 60px; }
-.section-title h2 { font-size: 50px; margin-bottom: 15px; color: #222; }
-.section-title p { font-size: 18px; color: #666; margin-bottom: 30px; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-
-.safari-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); transition: 0.4s; cursor: pointer; }
-.safari-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); }
-
-.safari-image { position: relative; height: 280px; overflow: hidden; background: #f0f0f0; }
-.safari-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
-.safari-card:hover .safari-image img { transform: scale(1.1); }
-
-.safari-badge { position: absolute; top: 15px; right: 15px; background: gold; color: #000; padding: 10px 20px; border-radius: 50px; font-weight: 600; font-size: 12px; }
-
-.safari-content { padding: 30px; }
-.safari-title { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: #222; }
-.safari-type { color: gold; font-size: 12px; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
-.safari-description { color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-
-.safari-details { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
-.detail { font-size: 13px; }
-.detail-label { font-weight: 600; color: #222; margin-bottom: 3px; }
-.detail-value { color: #666; }
-
-.safari-footer { display: flex; justify-content: space-between; align-items: center; }
-.price { font-size: 28px; font-weight: 700; color: gold; }
-.book-btn { padding: 12px 25px; background: #000; color: #fff; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-.book-btn:hover { background: gold; color: #000; }
-
-.cta-section { background: linear-gradient(135deg, #000, #1a1a1a); color: #fff; padding: 60px 8%; text-align: center; margin-top: 60px; }
-.cta-section h2 { font-size: 42px; margin-bottom: 20px; }
-.cta-section p { font-size: 18px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
-.cta-btn { padding: 15px 50px; background: gold; color: #000; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 16px; transition: 0.3s; }
-.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
-
-footer { background: #000; color: #fff; padding: 50px 8%; text-align: center; }
-.footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
-.footer-section h3 { color: gold; margin-bottom: 15px; font-size: 18px; }
-.footer-section p, .footer-section a { color: #ccc; font-size: 14px; line-height: 1.8; transition: 0.3s; }
-.footer-section .contact-info { margin-top: 10px; font-size: 13px; }
-.footer-section a:hover { color: gold; }
-.footer-bottom { border-top: 1px solid #333; padding-top: 30px; text-align: center; }
-
-@media (max-width: 768px) {
-  header { padding: 12px 4%; }
-  nav ul { gap: 15px; }
-  nav ul li a { font-size: 13px; }
-  .hero-content h1 { font-size: 40px; }
-  .hero-content p { font-size: 16px; }
-  section { padding: 60px 4%; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-  .section-title h2 { font-size: 35px; }
-  .cta-section { padding: 40px 4%; }
-  .cta-section h2 { font-size: 32px; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-@media (max-width: 480px) {
-  .hero-content h1 { font-size: 28px; }
-  .hero-content p { font-size: 14px; }
-  nav ul { gap: 10px; font-size: 12px; }
-  .logo h2 { font-size: 18px; }
-  .grid { grid-template-columns: 1fr; }
-  .safari-image { height: 200px; }
-  .safari-details { grid-template-columns: 1fr; }
+body{
+    font-family:'Poppins',sans-serif;
+    background:#07111f;
+    color:#fff;
+    overflow-x:hidden;
 }
+
+a{
+    text-decoration:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+.container{
+    width:90%;
+    max-width:1350px;
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:1000;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(12px);
+    transition:.4s;
+    padding:18px 0;
+}
+
+header.scrolled{
+    background:#04101d;
+    box-shadow:0 5px 20px rgba(0,0,0,.5);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#fff;
+    font-size:1.5rem;
+    font-weight:700;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:28px;
+}
+
+nav ul li a{
+    color:#fff;
+    font-weight:500;
+    position:relative;
+    transition:.3s;
+}
+
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#ffb703;
+    transition:.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+nav ul li a:hover{
+    color:#ffb703;
+}
+
+.menu-btn{
+    display:none;
+    font-size:2rem;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
+    url('images/images/20250713_062811.jpg')
+    center/cover no-repeat;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(transparent,rgba(0,0,0,.4));
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:fadeIn 2s ease;
+}
+
+.hero h1{
+    font-size:5rem;
+    line-height:1.1;
+    margin-bottom:25px;
+    font-weight:800;
+}
+
+.hero h1 span{
+    color:#ffb703;
+}
+
+.hero p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.9;
+    font-size:1.2rem;
+    color:#f1f1f1;
+}
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:50px;
+    background:#ffb703;
+    color:#000;
+    font-weight:700;
+    transition:.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    background:#fff;
+}
+
+.btn-outline{
+    background:transparent;
+    border:2px solid #fff;
+    color:#fff;
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    color:#ffb703;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#cfd8dc;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* SAFARIS */
+
+.safaris{
+    padding:120px 0;
+    background:#081321;
+}
+
+.safari-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:35px;
+}
+
+.safari-card{
+    background:#0d1c2f;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+    transition:.5s;
+}
+
+.safari-card:hover{
+    transform:translateY(-15px);
+}
+
+.safari-image{
+    height:280px;
+    overflow:hidden;
+    position:relative;
+}
+
+.safari-image img{
+    height:100%;
+    object-fit:cover;
+    transition:1.2s;
+}
+
+.safari-card:hover .safari-image img{
+    transform:scale(1.15);
+}
+
+.safari-image::after{
+    content:'Luxury Safari';
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:#ffb703;
+    color:#000;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:.85rem;
+    font-weight:600;
+}
+
+.safari-content{
+    padding:30px;
+}
+
+.safari-content h3{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.safari-content p{
+    color:#cfd8dc;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.features{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.features span{
+    background:#14263d;
+    color:#ffb703;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:.9rem;
+}
+
+/* EXPERIENCE SECTION */
+
+.experiences{
+    padding:120px 0;
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.7)),
+    url('images/images/IMG_20240322_092942.jpg')
+    center/cover fixed;
+}
+
+.experience-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.experience-box{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    padding:40px 25px;
+    border-radius:25px;
+    text-align:center;
+    transition:.4s;
+}
+
+.experience-box:hover{
+    transform:translateY(-10px);
+    background:#ffb703;
+    color:#000;
+}
+
+.experience-box i{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.experience-box h3{
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+/* PARALLAX */
+
+.parallax{
+    height:70vh;
+    background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+    url('images/images/Gamedrive 10 copy.jpg')
+    center/cover fixed;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 20px;
+}
+
+.parallax-content h2{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.parallax-content p{
+    max-width:850px;
+    margin:auto;
+    line-height:1.9;
+    font-size:1.15rem;
+}
+
+/* CTA */
+
+.cta{
+    padding:120px 0;
+    background:#07111f;
+    text-align:center;
+}
+
+.cta-box{
+    background:#0d1c2f;
+    padding:60px;
+    border-radius:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.cta-box h2{
+    font-size:3rem;
+    margin-bottom:20px;
+    color:#ffb703;
+}
+
+.cta-box p{
+    max-width:850px;
+    margin:auto;
+    line-height:1.8;
+    color:#cfd8dc;
+}
+
+/* FOOTER */
+
+footer{
+    background:#02060c;
+    padding:80px 0 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+    margin-bottom:50px;
+}
+
+footer h4{
+    color:#ffb703;
+    margin-bottom:20px;
+    font-size:1.4rem;
+}
+
+footer p,
+footer li,
+footer a{
+    color:#bbb;
+    line-height:2;
+    transition:.3s;
+}
+
+footer a:hover{
+    color:#fff;
+}
+
+footer ul{
+    list-style:none;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    text-align:center;
+    padding-top:20px;
+    color:#777;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.safari-card{
+    animation:fadeIn 1.2s ease;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .hero h1{
+        font-size:3.5rem;
+    }
+
+    nav{
+        position:absolute;
+        top:100%;
+        left:-100%;
+        width:100%;
+        background:#081321;
+        transition:.4s;
+    }
+
+    nav.active{
+        left:0;
+    }
+
+    nav ul{
+        flex-direction:column;
+        padding:30px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .hero{
+        height:auto;
+        padding:160px 0 120px;
+    }
+
+    .hero h1{
+        font-size:2.5rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .section-title h2{
+        font-size:2.2rem;
+    }
+
+    .parallax-content h2{
+        font-size:2.5rem;
+    }
+
+    .cta-box{
+        padding:35px 20px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <!-- HEADER -->
-<header>
-<div class="logo">Top Travel Planners and Tours Zambia</div>
-<nav>
+
+<header id="header">
+
+<div class="container navbar">
+
+<a href="index.html" class="logo">
+<img src="images/images/WhatsApp Image 2026-05-03 at 16.54.03.jpeg" alt="Logo">
+<span>Top Travel Planners & Tours  Zambia</span>
+</a>
+
+<div class="menu-btn" id="menu-btn">
+<i class="fas fa-bars"></i>
+</div>
+
+<nav id="nav">
+
 <ul>
+
 <li><a href="index.html">Home</a></li>
+
 <li><a href="destinations.html">Destinations</a></li>
+
 <li><a href="packages.html">Packages</a></li>
-<li><a href="safaris.html" class="active">Safaris</a></li>
-<li><a href="flights.html">Flights</a></li>
+
+<li><a href="safaris.html">Safaris</a></li>
+
 <li><a href="hotels.html">Hotels</a></li>
+
+<li><a href="flights.html">Flights</a></li>
+
 <li><a href="services.html">Services</a></li>
+
 <li><a href="membership.html">Membership</a></li>
+
 <li><a href="blog.html">Blog</a></li>
+
 <li><a href="contact.html">Contact</a></li>
+
 </ul>
+
 </nav>
+
+</div>
+
 </header>
 
 <!-- HERO -->
+
 <section class="hero">
-<div>
-<h1>Authentic African Safari Experiences</h1>
-<p>Discover Zambia’s wildlife in its purest form</p>
-<button class="btn" onclick="location.href='packages.html'">Explore Packages</button>
+
+<div class="container hero-content">
+
+<h1>
+Luxury African <span>Safaris & Adventures</span>
+</h1>
+
+<p>
+Explore Zambia’s breathtaking wildlife parks,
+luxury safari lodges, waterfalls, hiking trails,
+nature walks, forests, mountain adventures and
+unforgettable African travel experiences.
+</p>
+
+<div class="hero-buttons">
+
+<a href="packages.html" class="btn">
+Explore Packages
+</a>
+
+<a href="contact.html" class="btn btn-outline">
+Book Safari
+</a>
+
 </div>
+
+</div>
+
 </section>
 
-<!-- INTRO -->
-<section class="section">
-<h2>Experience Zambia’s Wild Beauty</h2>
-<p>
-Zambia is one of Africa’s top safari destinations, offering raw, untouched wilderness and intimate wildlife encounters. At Top Travel Planners and Tours Zambia, we bring you closer to nature through expertly guided safaris designed for both adventure and luxury.
-</p>
+<!-- SAFARIS -->
+
+<section class="safaris">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Top Safari Destinations</h2>
 
 <p>
-From the vast plains of South Luangwa to the riverbanks of the Lower Zambezi, every safari is crafted to deliver unforgettable moments — from lion sightings at sunrise to elephants crossing your path at sunset.
+Experience world-class luxury safaris,
+wildlife encounters, nature adventures and
+premium African travel experiences across Zambia.
 </p>
+
+</div>
+
+<div class="safari-grid">
+
+<!-- CARD -->
+
+<div class="safari-card">
+
+<div class="safari-image">
+<img src="images/images/IMG-20240324-WA0139.jpg">
+</div>
+
+<div class="safari-content">
+
+<h3>South Luangwa Safari</h3>
+
+<p>
+Enjoy luxury walking safaris, premium bush camps,
+lion tracking and unforgettable wildlife encounters
+in Zambia’s famous safari destination.
+</p>
+
+<div class="features">
+<span>Walking Safari</span>
+<span>Luxury Camps</span>
+<span>Wildlife</span>
+</div>
+
+<a href="contact.html" class="btn">
+Book Safari
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="safari-card">
+
+<div class="safari-image">
+<img src="images/images/IMG-20240324-WA0053.jpg">
+</div>
+
+<div class="safari-content">
+
+<h3>Victoria Falls Adventure</h3>
+
+<p>
+Discover helicopter rides, sunset cruises,
+white-water rafting and breathtaking waterfall
+views at Africa’s natural wonder.
+</p>
+
+<div class="features">
+<span>Waterfalls</span>
+<span>Adventure</span>
+<span>Cruises</span>
+</div>
+
+<a href="destinations.html" class="btn">
+Explore Falls
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="safari-card">
+
+<div class="safari-image">
+<img src="images/images/IMG-20240324-WA0010.jpg">
+</div>
+
+<div class="safari-content">
+
+<h3>Lower Zambezi Canoe Safari</h3>
+
+<p>
+Luxury river safaris, canoe adventures,
+fishing expeditions and premium riverside
+lodges along the mighty Zambezi River.
+</p>
+
+<div class="features">
+<span>River Safari</span>
+<span>Canoeing</span>
+<span>Luxury Lodges</span>
+</div>
+
+<a href="packages.html" class="btn">
+View Packages
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="safari-card">
+
+<div class="safari-image">
+<img src="images/images/IMG-20240322-WA0210.jpg">
+</div>
+
+<div class="safari-content">
+
+<h3>Kafue National Park</h3>
+
+<p>
+One of Africa’s largest parks featuring
+luxury safari camps, hot air balloon rides,
+birdwatching and wildlife photography.
+</p>
+
+<div class="features">
+<span>Balloon Safari</span>
+<span>Photography</span>
+<span>Nature</span>
+</div>
+
+<a href="contact.html" class="btn">
+Discover More
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="safari-card">
+
+<div class="safari-image">
+<img src="images/images/IMG-20240322-WA0202.jpg">
+</div>
+
+<div class="safari-content">
+
+<h3>Nyika Plateau Hiking</h3>
+
+<p>
+Experience mountain hiking, cool landscapes,
+luxury camping and breathtaking panoramic
+views across Zambia and Malawi.
+</p>
+
+<div class="features">
+<span>Mountain Hiking</span>
+<span>Nature Walks</span>
+<span>Camping</span>
+</div>
+
+<a href="packages.html" class="btn">
+Adventure Tours
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="safari-card">
+
+<div class="safari-image">
+<img src="images/images/IMG-20240322-WA0200.jpg">
+</div>
+
+<div class="safari-content">
+
+<h3>Rainforest & Nature Trails</h3>
+
+<p>
+Discover tropical forests, nature walks,
+birdwatching trails and luxury eco-tourism
+experiences in Africa’s hidden gems.
+</p>
+
+<div class="features">
+<span>Forests</span>
+<span>Nature Walks</span>
+<span>Eco Tourism</span>
+</div>
+
+<a href="contact.html" class="btn">
+Explore Nature
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- SAFARI TYPES -->
-<section class="section">
-<h2>Our Safari Experiences</h2>
+<!-- EXPERIENCES -->
 
-<div class="grid">
+<section class="experiences">
 
-<div class="card">
-<img src="https://lh3.googleusercontent.com/p/AF1QipPjei2S4RUx02xNw6iJYrKnKPxIBL5elJ8MFluP=w1200">
-<div class="card-content">
+<div class="container">
+
+<div class="section-title">
+
+<h2>Adventure Experiences</h2>
+
+<p>
+Enjoy unforgettable outdoor adventures,
+luxury expeditions and African wilderness activities.
+</p>
+
+</div>
+
+<div class="experience-grid">
+
+<div class="experience-box">
+<i class="fa-solid fa-person-hiking"></i>
+<h3>Mountain Hiking</h3>
+<p>Luxury guided mountain and plateau hiking tours.</p>
+</div>
+
+<div class="experience-box">
+<i class="fa-solid fa-water"></i>
+<h3>Waterfall Adventures</h3>
+<p>Explore Africa’s most breathtaking waterfalls.</p>
+</div>
+
+<div class="experience-box">
+<i class="fa-solid fa-tree"></i>
+<h3>Forest Walks</h3>
+<p>Premium eco-tourism and rainforest discoveries.</p>
+</div>
+
+<div class="experience-box">
+<i class="fa-solid fa-campground"></i>
+<h3>Luxury Camping</h3>
+<p>Enjoy premium bush camping under African skies.</p>
+</div>
+
+<div class="experience-box">
+<i class="fa-solid fa-binoculars"></i>
 <h3>Game Drives</h3>
-<p>Explore national parks in 4x4 vehicles guided by professional experts.</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://lh3.googleusercontent.com/p/AF1QipMyODPTAd63HV18RcxoF5UQeAEgJFVOUREBq38n=w1200">
-<div class="card-content">
-<h3>Walking Safaris</h3>
-<p>Get up close with nature on foot — Zambia’s signature safari experience.</p>
-</div>
+<p>Discover lions, elephants and rare wildlife species.</p>
 </div>
 
-<div class="card">
-<img src="https://lh3.googleusercontent.com/p/AF1QipPqX2mIGuDgJ1eU-hFyfmlKHzadqseLBI2LWbvg=w1200">
-<div class="card-content">
-<h3>Canoe Safaris</h3>
-<p>Paddle along the Zambezi River while spotting wildlife from the water.</p>
-</div>
+<div class="experience-box">
+<i class="fa-solid fa-ship"></i>
+<h3>River Cruises</h3>
+<p>Luxury sunset cruises and canoe safari experiences.</p>
 </div>
 
 </div>
+
+</div>
+
 </section>
 
-<!-- PACKAGES -->
-<section class="section">
-<h2>Featured Safari Packages</h2>
+<!-- PARALLAX -->
 
-<div class="grid">
+<section class="parallax">
 
-<div class="card">
-<img src="https://lh3.googleusercontent.com/p/AF1QipPs2l0ycwC-C5JFn5GBzqzLBkA0WljbGSi_hrgH=w1200">
-<div class="card-content">
-<h3>South Luangwa Luxury Safari (5 Days)</h3>
-<p>Enjoy game drives, walking safaris, and luxury bush lodges.</p>
-<p class="price">$1,500 per person</p>
-<button class="btn" onclick="location.href='contact.html'">Book Safari</button>
-</div>
-</div>
+<div class="parallax-content">
 
-<div class="card">
-<img src="https://lh3.googleusercontent.com/p/AF1QipOmC8pSwzUqNvIzdcfR8p6wEnPo7uZauCgbzbdw=w1200">
-<div class="card-content">
-<h3>Kafue Exclusive Safari (6 Days)</h3>
-<p>Explore remote wilderness with private guides and premium camps.</p>
-<p class="price">$1,800 per person</p>
-<button class="btn" onclick="location.href='contact.html'">Book Safari</button>
-</div>
-</div>
+<h2>Experience The Wild Beauty Of Africa</h2>
 
-<div class="card">
-<img src="https://lh3.googleusercontent.com/p/AF1QipMciJHLu-pJnKeJ4heQJwkLXsKSkBMjqJPQPAr0=w1200">
-<div class="card-content">
-<h3>Lower Zambezi River Safari (4 Days)</h3>
-<p>Canoe safaris, fishing, and luxury riverside lodges.</p>
-<p class="price">$1,200 per person</p>
-<button class="btn" onclick="location.href='contact.html'">Book Safari</button>
-</div>
-</div>
+<p>
+Travel through luxury safari parks,
+waterfalls, forests, wildlife reserves,
+mountain adventures and unforgettable
+African destinations with Top Travel Planners Zambia.
+</p>
+
+<br><br>
+
+<a href="contact.html" class="btn">
+Start Your Adventure
+</a>
 
 </div>
+
 </section>
 
-<!-- CTA SECTION -->
-<section class="cta-section">
-  <h2>Start Your Safari Adventure Today</h2>
-  <p>Contact our travel experts to customize your perfect African safari experience</p>
-  <button class="cta-btn" onclick="location.href='contact.html'">Plan Your Safari</button>
-</section>
+<!-- CTA -->
 
-<!-- PHOTO ALBUMS -->
+<section class="cta">
 
-<section class="photo-albums">
+<div class="container">
 
-  <div class="section-title">
+<div class="cta-box">
 
-    <h2>Our Photo Albums</h2>
+<h2>Book Your Luxury Safari Today</h2>
 
-    <p>Explore our travel memories and adventures.</p>
+<p>
+Explore Zambia’s premium safari experiences,
+luxury lodges, adventure tours and unforgettable
+African travel destinations with our expert team.
+</p>
 
-  </div>
+<br><br>
 
-  <div class="albums-grid">
+<a href="contact.html" class="btn">
+Contact Us
+</a>
 
-    <iframe src="https://photos.google.com/share/AF1QipNJm8k8uHWcdEsVLTTnxsbvHltiaPK-2AoOV3TDNPHByOCwq-DMMFTqJuyXerpLdg?key=QnRhZ3hOaHVJSTYzMzFoU3hJbzQ0ZEtkQ210bUtB/embed" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+</div>
 
-    <iframe src="https://photos.google.com/share/AF1QipO7NhxDAKmcMXGBxbATAmkHusktGoMpH8hqyHSzjpae1rBpjUUmRtMWUi2SgsDqRA?key=cWhSRDM0QVFjcW9wV0d3RFU3SlpPRlBDanJ3MVBR/embed" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
-
-  </div>
+</div>
 
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>Top Travel Planners and Tours Zambia</h3>
-      <p>Premium safari and travel experiences across Africa's most spectacular destinations. We create unforgettable journeys with expert guides and luxury accommodations.</p>
-    </div>
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <a href="index.html">Home</a><br>
-      <a href="destinations.html">Destinations</a><br>
-      <a href="packages.html">Packages</a><br>
-      <a href="blog.html">Blog</a>
-    </div>
-    <div class="footer-section">
-      <h3>Services</h3>
-      <a href="flights.html">Flight Booking</a><br>
-      <a href="hotels.html">Hotel Booking</a><br>
-      <a href="services.html">Travel Services</a><br>
-      <a href="safaris.html">Safari Experiences</a>
-    </div>
-    <div class="footer-section">
-      <h3>Contact Info</h3>
-      <p><strong>Phone:</strong> +260 771 464 228</p>
-      <p><strong>Email:</strong> res.toptravelplanneszambia@gmail.com</p>
-      <p><strong>Location:</strong> Lusaka, Zambia</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Top Travel Planners and Tours Zambia. All Rights Reserved.</p>
-  </div>
+
+<div class="footer-grid">
+
+<div class="footer-box">
+
+<h3>Top Travel Planners & Tours Zambia</h3>
+
+<p>
+Luxury tourism and premium travel experiences across Africa and worldwide.
+</p>
+
+<p>
+<strong>Email:</strong> res.toptravelplannerszambia@gmail.com
+</p>
+
+<p>
+<strong>Phone:</strong> +260 771 464 228
+</p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Quick Links</h3>
+
+<p><a href="#">Home</a></p>
+<p><a href="#">Packages</a></p>
+<p><a href="#">Destinations</a></p>
+<p><a href="#">Flights</a></p>
+<p><a href="#">Membership</a></p>
+<p><a href="#">Hotels</a></p>
+<p><a href="#">Services</a></p>
+<p><a href="#">Blog</a></p>
+<p><a href="#">Contact</a></p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Social Media</h3>
+
+<p><a href="#">Facebook</a></p>
+<p><a href="#">Instagram</a></p>
+<p><a href="#">TikTok</a></p>
+<p><a href="#">YouTube</a></p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 Top Travel Planners & Tours Zambia. All Rights Reserved.
+
+</div>
+
 </footer>
 
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/260771464228" class="whatsapp">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+<!-- JAVASCRIPT -->
+
 <script>
-// Preloader
-window.addEventListener("load", function() {
-  document.getElementById("preloader").style.display = "none";
+
+window.addEventListener("load",()=>{
+
+document.getElementById("preloader").style.display="none";
+
 });
+
+window.addEventListener("scroll",()=>{
+
+const header=document.querySelector("header");
+
+if(window.scrollY>50){
+
+header.style.background="rgba(0,0,0,0.9)";
+
+}else{
+
+header.style.background="rgba(0,0,0,0.6)";
+
+}
+
+});
+
 </script>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/260771464228" class="whatsapp">
-  💬
-</a>
-
-<!-- BOOK NOW -->
-<a href="packages.html" class="book-now-btn">
-  Book<br>Now
-</a>
-
 </body>
+
 </html>
+```

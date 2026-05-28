@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Victoria Falls — Discover Zambia | TopPlanner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script defer src="js/script.js"></script>
+    <style>
+      /* Page-specific tweaks */
+      .hero.vf {
+        background-image: url('https://images.openai.com/static-rsc-4/2SttES2UtQVhi_Xb61O1-achGiCjR36-lzm7gYD-ubEZH9zc8oufoFWWqb9MTChERyoEmiI5pecREBI0YF5KUvTHdoc5xWarRnuIoRoZYBHPu2e_hHSLE_iky-Iy16abo11qgwzVmWmEO54rEEHsxgJ8niWXBJuG7uuJffl4I4ACvFyvaUdPlbWxpzT0Ycgi?purpose=fullsize');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .hero.vf .hero-content { max-width: 900px; }
+
+      .more-content { display: none; }
+
+      @media (max-width:768px) {
+        .hero.vf { background-attachment: scroll; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="preloader"></div>
+
+    <header>
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="TopPlanner logo" />
+        <span>TopPlanner</span>
+      </a>
+      <div class="menu-icon" onclick="toggleMenu()"></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="hotels.html">Hotels</a></li>
+          <li><a href="safaris.html">Safaris</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero vf">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Victoria Falls — The Smoke That Thunders</h1>
+          <p class="lead">Experience one of the Seven Natural Wonders of the World: dramatic waterfalls, misty rainbows, and unforgettable adventure.</p>
+          <div class="hero-buttons">
+            <a class="hero-btn gold-btn" href="#" data-book="Victoria Falls">Book Now</a>
+              <a class="hero-btn white-btn" href="#overview">Read More</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="container">
+        <div class="section-title">
+          <h2>Discover Victoria Falls</h2>
+          <p>Victoria Falls (Mosi-oa-Tunya) is Zambia’s premier destination for luxury travel, adventure, and wildlife.</p>
+        </div>
+
+        <div class="about">
+          <div class="about-image">
+            <img loading="lazy" src="https://images.openai.com/static-rsc-4/7iZlWj8t2066PuQBBsy1otKEUaWsTfSDh-y4Hib3dC6a1n2d4fKebGJ6SGeAZGiREd6n3xSe_Vo0fY1C0B1bCa5_a8EZJGKVaBW6DN-BCYxnqQXdaWjSurMMlbLKW7UdjbyBzK73vJXUdeoXNYF9B8VuQ5tWYrWXoDcVgEqt0zvibfSCaqw-dZillkKwby4m?purpose=fullsize" alt="Victoria Falls View">
+          </div>
+          <div class="about-content">
+            <h2>Why Visit</h2>
+            <p>Victoria Falls combines iconic scenery with world-class activities: helicopter tours, Devil’s Pool, white-water rafting and luxury riverside lodges.</p>
+            <p class="more-summary">Perfect for honeymooners, photographers, and adventure travelers.</p>
+            <div class="more-content">
+              <p>Visitors can combine adrenaline activities with relaxing sunset cruises, guided wildlife viewing nearby, and exclusive lodge experiences overlooking the Zambezi.</p>
+              <ul>
+                <li>Devil’s Pool swimming (seasonal)</li>
+                <li>Helicopter & microlight flights</li>
+                <li>White-water rafting and bungee jumping</li>
+                <li>Luxury riverside lodges & spas</li>
+                <li>Wildlife viewing in Mosi-oa-Tunya National Park</li>
+              </ul>
+            </div>
+
+            <p class="cta-row" style="margin-top:18px;">
+              <a class="btn gold-btn" href="contact.html">Book Victoria Falls</a>
+              <a class="btn white-btn" href="#gallery">View Gallery</a>
+            </p>
+            <p style="margin-top:12px;"><button class="btn" id="readMoreBtn">Read More</button></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="container">
+        <div class="section-title"><h2>Photo Gallery</h2></div>
+        <div class="gallery-grid">
+          <img loading="lazy" src="https://images.openai.com/static-rsc-4/EK22CkOjfi8LRldvf9vT6tj5y7FxUaujVaoCefPghn41kDY9GUFj6TvVdr4TtfRA-bjMYmIUwAdPOuS-ZDYPsrQGmM10zIbU7gCnD05_CQse7nt3VLph2fitNGDLnuwtUDF-lewzKQhJ-xlRWuXCvDNvyI4No3MD7NZ0bDK3Mu7Uxnc1dGVUN75W_HECI5_q?purpose=fullsize" alt="Falls1">
+          <img loading="lazy" src="https://images.openai.com/static-rsc-4/BE0x9xP8FkN-QFdK6U3IY45SC_lCEyj69wzRz4jIKOL5fNJ0_wGnmD4x-LGpkeSqJaJHYSJFoixEcA9fkt0F1gdtikquARfji6Qk-eZraS0NJsC5dWNH6rMEVdZp72mVwNozcz1Rim2T1mkMHX1op_xwupYi2eKeUjiepQ4OkOzMtZwUJluLYHgeZ98oGgHo?purpose=fullsize" alt="Falls2">
+          <img loading="lazy" src="https://images.openai.com/static-rsc-4/MLZcz_qTRSUgcxWIxzWWJbi6pIQDvsKiyYBwlgBWXecUrRxs7MO9tPMolwjdggBZpl7l2k_LKIIyeLsfh7YGpmztl0NdssgpnlY68rB_J1Y_QvHvQ3tOwRuQZnmAzx-c6HjuiB6vhaBG74bnbtCb3DJ-lqrtJQrE2NWGUQzsdVgNweFA8mdQvQlCC30oYL-c?purpose=fullsize" alt="Falls3">
+          <img loading="lazy" src="https://images.openai.com/static-rsc-4/9J0Vp7kZVfBFG1OkMGIcIBJge2SlH0BUBtxDem3_EyJgIhvtwIH9yVBAqnlzDa-g7qY4YbsiByBkYUI8dRrLhCNVkvdNVVxu-Ff6seJMIOvIGOhgIsA6-KG0Z7XklmLc0oaN0EdtYxXuJYpZlGK30OlLJWeyBohlITA7KiEfpFCPcFQyzrKqt2eFaqjzhoYF?purpose=fullsize" alt="Falls4">
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="section-title"><h2>Packages & Suggested Itineraries</h2></div>
+        <div class="package-grid">
+          <div class="package-card">
+              <img loading="lazy" src="https://images.openai.com/static-rsc-4/6AAcngYQDaOlitJ2u2F-7o_tSY6oHsXThAHKd2ujWG5ILNSOWsb2tBKDlPQnb1O4oaD5Je1O1zJEnVHAzI1YQ28rCLX-S1IDEMZXGs3vTDtCDGUeEiMYcqw2EvnQrZmdwQqQJ_CJwVqxVKUKU5oyLQp22yECIHQFa6Tu93kFXqyR0bA4QgBjrbVbEcH-LgE3?purpose=fullsize" alt="Package1">
+            <div class="package-content">
+              <h3>Victoria Falls Luxury 3-Night</h3>
+              <p>Includes riverside lodge, helicopter flight, and guided tour of the falls.</p>
+              <p class="price">From $1,299</p>
+              <p><a class="btn gold-btn" href="#" data-book="Victoria Falls Luxury 3-Night">Book This Package</a></p>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <img loading="lazy" src="https://images.openai.com/static-rsc-4/6AAcngYQDaOlitJ2u2F-7o_tSY6oHsXThAHKd2ujWG5ILNSOWsb2tBKDlPQnb1O4oaD5Je1O1zJEnVHAzI1YQ28rCLX-S1IDEMZXGs3vTDtCDGUeEiMYcqw2EvnQrZmdwQqQJ_CJwVqxVKUKU5oyLQp22yECIHQFa6Tu93kFXqyR0bA4QgBjrbVbEcH-LgE3?purpose=fullsize" alt="Package2">
+            <div class="package-content">
+              <h3>Adventure & Safari Add-On</h3>
+              <p>Combine your falls visit with a 4-night luxury safari in South Luangwa.</p>
+              <p class="price">From $2,499</p>
+              <p><a class="btn gold-btn" href="#" data-book="Adventure & Safari Add-On">Enquire Now</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Booking modal -->
+    <div id="bookingModal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <button class="modal-close" onclick="closeBookingModal()">✕</button>
+        <h3>Booking Enquiry</h3>
+        <form id="bookingForm">
+          <div class="form-row">
+            <input name="name" placeholder="Full name" required />
+            <input name="email" type="email" placeholder="Email address" required />
+          </div>
+          <div class="form-row" style="margin-top:12px;">
+            <input name="arrival" type="date" placeholder="Arrival" />
+            <input name="departure" type="date" placeholder="Departure" />
+          </div>
+          <input type="hidden" name="destination" value="Victoria Falls" />
+          <div style="margin-top:12px;">
+            <textarea name="message" placeholder="Additional details (rooms, special requests)"></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn white-btn" onclick="closeBookingModal()">Cancel</button>
+            <button type="submit" class="btn gold-btn">Send Enquiry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>TopPlanner</h4>
+          <p>Luxury travel and safari experiences in Zambia. <a href="contact.html">Contact us</a> to start planning.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Email: info@kawatours.com</p>
+          <p>Phone: +260 000 000000</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">&copy; <span id="year"></span> TopPlanner — All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('readMoreBtn').addEventListener('click', function(){
+        var m = document.querySelector('.more-content');
+        if (!m) return;
+        if (m.style.display === 'block') { m.style.display = 'none'; this.textContent = 'Read More'; }
+        else { m.style.display = 'block'; this.textContent = 'Show Less'; window.scrollTo({top: m.offsetTop - 80, behavior: 'smooth'}); }
+      });
+    </script>
+  </body>
+</html>

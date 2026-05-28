@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,307 +8,444 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: #222;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; }
-    section { padding: 100px 8%; }
-
-    #preloader {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 99999;
-    }
-
-    .loader {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 8px solid rgba(255, 255, 255, 0.2);
-      border-top: 8px solid gold;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 999;
-      padding: 18px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.8);
+    .hotel-search-box {
+      background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+      padding: 40px 8%;
+      margin: -60px 0 60px 0;
+      position: relative;
+      z-index: 10;
       backdrop-filter: blur(10px);
     }
 
-    .logo { display: flex; align-items: center; gap: 12px; }
-    .logo h2 { color: #fff; font-size: 22px; font-weight: 700; }
-    .logo h2 span { color: gold; }
-
-    nav ul { display: flex; gap: 28px; list-style: none; }
-    nav ul li a { color: #fff; font-size: 15px; transition: 0.4s; font-weight: 500; }
-    nav ul li a:hover, nav ul li a.active { color: gold; }
-
-    .header-btns { display: flex; gap: 15px; }
-
-    .btn {
-      padding: 13px 28px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.4s;
-      font-size: 14px;
-    }
-
-    .gold-btn { background: gold; color: #000; }
-    .gold-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
-
-    .white-btn { background: #fff; color: #000; }
-    .white-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4); }
-
-    .hero {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      margin-top: 0;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: url('https://lh3.googleusercontent.com/p/AF1QipP0z5VWHmuhRUsEAF4eGmaRZs_pckkY0LmG9n7g=w1200') center/cover;
-      z-index: -1;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      top: 0;
-      left: 0;
-    }
-
-    .hero-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      text-align: center;
-      color: #fff;
-    }
-
-    .hero-content h1 { font-size: 75px; line-height: 1.2; margin-bottom: 25px; animation: slideUp 1s ease; }
-    .hero-content p { font-size: 20px; max-width: 900px; margin: auto; margin-bottom: 40px; line-height: 1.8; animation: slideUp 1.2s ease; }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(100px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .search-box {
-      width: 85%;
-      margin: auto;
-      margin-top: -80px;
-      background: #fff;
-      position: relative;
-      z-index: 10;
-      padding: 35px;
-      border-radius: 20px;
+    .search-filters {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
     }
 
-    .search-card { display: flex; flex-direction: column; }
-    .search-card label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 14px; }
-    .search-card input, .search-card select { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-family: 'Poppins', sans-serif; font-size: 14px; transition: 0.3s; }
-    .search-card input:focus, .search-card select:focus { outline: none; border-color: gold; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    .search-filters input,
+    .search-filters select {
+      padding: 12px 15px;
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.95);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .search-filters input:focus,
+    .search-filters select:focus {
+      outline: none;
+      border-color: gold;
+      box-shadow: 0 0 10px rgba(255,215,0,0.3);
+    }
 
     .search-btn {
+      padding: 12px 35px;
       background: gold;
       color: #000;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
-      padding: 15px;
       transition: 0.3s;
       align-self: flex-end;
     }
 
-    .search-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
-
-    .section-title { text-align: center; margin-bottom: 60px; }
-    .section-title h2 { font-size: 50px; margin-bottom: 15px; color: #222; }
-    .section-title p { font-size: 18px; color: #666; }
-
-    .filter-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; gap: 20px; flex-wrap: wrap; }
-    .filter-group { display: flex; gap: 15px; flex-wrap: wrap; }
-
-    .filter-btn {
-      padding: 10px 20px;
-      border: 2px solid #ddd;
-      background: #fff;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 500;
-      font-size: 14px;
+    .search-btn:hover {
+      background: #f0ad00;
+      transform: translateY(-2px);
     }
 
-    .filter-btn:hover, .filter-btn.active { border-color: gold; background: gold; color: #000; }
+    .region-section {
+      margin-bottom: 80px;
+    }
 
-    .sort-select { padding: 10px 20px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: 0.3s; }
-    .sort-select:hover { border-color: gold; }
+    .region-title {
+      font-size: 35px;
+      color: #222;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid gold;
+      display: inline-block;
+    }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+    .region-subtitle {
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
 
     .hotel-card {
       background: #fff;
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       transition: 0.4s;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(30px);
+      display: flex;
+      flex-direction: column;
     }
 
-    .hotel-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); }
-    .hotel-card.show { opacity: 1; transform: translateY(0); }
+    .hotel-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
 
-    .hotel-image { position: relative; height: 250px; overflow: hidden; background: #f0f0f0; }
-    .hotel-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
-    .hotel-card:hover .hotel-image img { transform: scale(1.1); }
+    .hotel-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      position: relative;
+    }
 
-    .hotel-badge { position: absolute; top: 15px; right: 15px; background: gold; color: #000; padding: 8px 15px; border-radius: 50px; font-weight: 600; font-size: 13px; }
-    .hotel-rating { position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.7); color: gold; padding: 8px 12px; border-radius: 50px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+    .hotel-rating {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: gold;
+      color: #000;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+    }
 
-    .hotel-content { padding: 25px; }
-    .hotel-name { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: #222; }
-    .hotel-location { color: #999; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 5px; }
-    .hotel-description { color: #666; font-size: 14px; margin-bottom: 15px; line-height: 1.6; height: 50px; overflow: hidden; }
+    .hotel-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
-    .hotel-amenities { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
-    .amenity-tag { background: #f0f0f0; padding: 5px 12px; border-radius: 20px; font-size: 12px; color: #666; }
+    .hotel-category {
+      display: inline-block;
+      background: rgba(255,215,0,0.2);
+      color: #000;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
 
-    .hotel-price { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid #eee; }
-    .price-info { display: flex; flex-direction: column; }
-    .price-label { font-size: 12px; color: #999; margin-bottom: 3px; }
-    .price-value { font-size: 24px; font-weight: 700; color: gold; }
+    .hotel-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+    }
 
-    .book-btn { padding: 12px 25px; background: #000; color: #fff; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-    .book-btn:hover { background: gold; color: #000; }
+    .hotel-location {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); animation: fadeIn 0.3s; }
+    .hotel-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      flex-grow: 1;
+      font-size: 14px;
+    }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hotel-amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .amenity {
+      background: #f5f5f5;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .hotel-price {
+      font-size: 24px;
+      color: gold;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .price-label {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .hotel-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .view-details-btn,
+    .book-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .view-details-btn {
+      background: #f0f0f0;
+      color: #000;
+      border: 1px solid #ddd;
+    }
+
+    .view-details-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .book-btn {
+      background: gold;
+      color: #000;
+    }
+
+    .book-btn:hover {
+      background: #f0ad00;
+      transform: translateY(-2px);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
     .modal-content {
       background-color: #fff;
       margin: 10% auto;
       padding: 30px;
-      border-radius: 20px;
+      border-radius: 15px;
       width: 90%;
       max-width: 600px;
-      max-height: 80vh;
+      max-height: 85vh;
       overflow-y: auto;
-      animation: slideDown 0.3s;
+      animation: slideIn 0.3s;
     }
 
-    @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-    .close:hover { color: #000; }
+    .close-modal {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-    .modal-title { font-size: 28px; margin-bottom: 20px; color: #222; }
-    .modal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px; }
-    .modal-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-    .modal-gallery img:hover { transform: scale(1.05); }
+    .close-modal:hover {
+      color: #000;
+    }
 
-    .modal-info { margin-bottom: 20px; }
-    .modal-info label { display: block; font-weight: 600; margin-bottom: 5px; color: #222; }
-    .modal-info p { color: #666; line-height: 1.8; margin-bottom: 15px; }
+    .modal-header {
+      margin-bottom: 25px;
+    }
 
-    .modal-features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-    .feature-item { background: #f0f0f0; padding: 12px; border-radius: 8px; font-size: 14px; color: #666; }
+    .modal-title {
+      font-size: 28px;
+      color: #222;
+      margin-bottom: 5px;
+    }
 
-    .booking-form { background: #f9f9f9; padding: 20px; border-radius: 10px; margin-top: 20px; }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #222; }
-    .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 14px; }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: gold; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    .modal-subtitle {
+      color: #666;
+      font-size: 14px;
+    }
 
-    .submit-btn { width: 100%; padding: 15px; background: gold; color: #000; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 16px; transition: 0.3s; }
-    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+    .modal-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
 
-    footer { background: #000; color: #fff; padding: 50px 8%; text-align: center; }
-    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
-    .footer-section h3 { color: gold; margin-bottom: 15px; font-size: 18px; }
-    .footer-section p, .footer-section a { color: #ccc; font-size: 14px; line-height: 1.8; transition: 0.3s; }
-.footer-section .contact-info { margin-top: 10px; font-size: 13px; }
-    .footer-section a:hover { color: gold; }
-    .footer-bottom { border-top: 1px solid #333; padding-top: 30px; text-align: center; }
+    .hotel-details {
+      margin-bottom: 25px;
+    }
+
+    .detail-section {
+      margin-bottom: 20px;
+    }
+
+    .detail-section h4 {
+      color: #000;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .detail-section p {
+      color: #666;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .detail-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .detail-section li {
+      color: #666;
+      padding: 5px 0;
+      padding-left: 25px;
+      position: relative;
+      font-size: 14px;
+    }
+
+    .detail-section li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: gold;
+      font-weight: bold;
+    }
+
+    .booking-form {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #222;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: gold;
+      box-shadow: 0 0 8px rgba(255,215,0,0.3);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .booking-submit {
+      width: 100%;
+      padding: 15px;
+      background: gold;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 15px;
+    }
+
+    .booking-submit:hover {
+      background: #f0ad00;
+      transform: translateY(-2px);
+    }
 
     @media (max-width: 768px) {
-      header { padding: 12px 4%; }
-      nav ul { gap: 15px; }
-      nav ul li a { font-size: 13px; }
-      .hero-content h1 { font-size: 40px; }
-      .hero-content p { font-size: 16px; }
-      .search-box { width: 95%; padding: 20px; grid-template-columns: 1fr; }
-      section { padding: 60px 4%; }
-      .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-      .section-title h2 { font-size: 35px; }
-      .filter-section { flex-direction: column; align-items: flex-start; }
-      .modal-content { width: 95%; margin: 20% auto; padding: 20px; }
-    }
+      .search-filters {
+        grid-template-columns: 1fr;
+      }
 
-    @media (max-width: 480px) {
-      .hero-content h1 { font-size: 28px; }
-      .search-box { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: 1fr; }
-      .modal-features { grid-template-columns: 1fr; }
-      nav ul { gap: 10px; font-size: 12px; }
+      .hotel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        width: 95%;
+        margin: 20% auto;
+      }
+
+      .region-title {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
-
 <body>
   <div id="preloader"><div class="loader"></div></div>
 
+  <!-- HEADER -->
   <header>
-    <div class="logo"><h2>Top <span>Planners</span></h2></div>
+    <div class="logo">
+      <h2>Top Travel Planners <span>and Tours Zambia</span></h2>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -316,7 +453,7 @@
         <li><a href="packages.html">Packages</a></li>
         <li><a href="safaris.html">Safaris</a></li>
         <li><a href="flights.html">Flights</a></li>
-        <li><a href="hotels.html" class="active">Hotels</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="membership.html">Membership</a></li>
         <li><a href="blog.html">Blog</a></li>
@@ -325,426 +462,1066 @@
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Find Your Perfect Stay</h1>
-      <p>Explore luxury hotels and affordable accommodations across Zambia</p>
+      <h1>Luxury Hotels & Accommodations</h1>
+      <p>Discover premium lodges, resorts, and safari camps across Zambia</p>
     </div>
   </section>
 
-  <div class="search-box">
-    <div class="search-card">
-      <label>Check-in</label>
-      <input type="date" id="checkin" />
-    </div>
-    <div class="search-card">
-      <label>Check-out</label>
-      <input type="date" id="checkout" />
-    </div>
-    <div class="search-card">
-      <label>Guests</label>
-      <select id="guests">
-        <option>1 Guest</option>
-        <option>2 Guests</option>
-        <option>3 Guests</option>
-        <option>4+ Guests</option>
+  <!-- SEARCH SECTION -->
+  <div class="hotel-search-box">
+    <div class="search-filters">
+      <input type="text" id="searchInput" placeholder="Search hotels by name..." onkeyup="searchHotels()">
+      <select id="regionFilter" onchange="filterByRegion()">
+        <option value="">All Regions</option>
+        <option value="lusaka">Lusaka</option>
+        <option value="livingstone">Livingstone</option>
+        <option value="south-luangwa">South Luangwa</option>
+        <option value="lower-zambezi">Lower Zambezi</option>
+        <option value="kafue">Kafue</option>
+        <option value="siavonga">Siavonga</option>
+        <option value="samfya">Samfya / Northern Circuit</option>
       </select>
-    </div>
-    <div class="search-card">
-      <label>Location</label>
-      <select id="location">
-        <option>All Locations</option>
-        <option>Livingstone</option>
-        <option>Lusaka</option>
-        <option>Ndola</option>
-        <option>South Luangwa</option>
-        <option>Lower Zambezi</option>
+      <select id="priceFilter" onchange="filterByPrice()">
+        <option value="">All Price Ranges</option>
+        <option value="budget">Budget ($)</option>
+        <option value="moderate">Moderate ($$)</option>
+        <option value="luxury">Luxury ($$$)</option>
+        <option value="ultra">Ultra Luxury ($$$$)</option>
       </select>
+      <button class="search-btn" onclick="resetFilters()">Reset Filters</button>
     </div>
-    <button class="search-btn" onclick="searchHotels()">Search</button>
   </div>
 
-  <section>
-    <div class="section-title">
-      <h2>Available Hotels</h2>
-      <p>Choose from our curated selection of premium accommodations</p>
+  <!-- LUSAKA HOTELS -->
+  <section style="padding: 0 8%;">
+    <div class="region-section">
+      <h2 class="region-title">🏙️ Lusaka Hotels</h2>
+      <p class="region-subtitle">Premium urban accommodations in Zambia's bustling capital city</p>
+      <div class="hotel-grid" id="lusakaGrid"></div>
     </div>
 
-    <div class="filter-section">
-      <div class="filter-group">
-        <button class="filter-btn active" onclick="filterHotels('all')">All Hotels</button>
-        <button class="filter-btn" onclick="filterHotels('luxury')">Luxury</button>
-        <button class="filter-btn" onclick="filterHotels('mid-range')">Mid-Range</button>
-        <button class="filter-btn" onclick="filterHotels('budget')">Budget</button>
-      </div>
-      <select class="sort-select" id="sortSelect" onchange="sortHotels()">
-        <option value="featured">Featured</option>
-        <option value="price-low">Price: Low to High</option>
-        <option value="price-high">Price: High to Low</option>
-        <option value="rating">Highest Rated</option>
-      </select>
+    <!-- LIVINGSTONE HOTELS -->
+    <div class="region-section">
+      <h2 class="region-title">🌊 Livingstone Hotels</h2>
+      <p class="region-subtitle">Luxury accommodations near the iconic Victoria Falls</p>
+      <div class="hotel-grid" id="livingstoneGrid"></div>
     </div>
 
-    <div class="grid" id="hotelGrid"></div>
+    <!-- SOUTH LUANGWA HOTELS -->
+    <div class="region-section">
+      <h2 class="region-title">🦁 South Luangwa National Park</h2>
+      <p class="region-subtitle">Safari lodges and bush camps with exceptional wildlife viewing</p>
+      <div class="hotel-grid" id="southLuangwaGrid"></div>
+    </div>
+
+    <!-- LOWER ZAMBEZI HOTELS -->
+    <div class="region-section">
+      <h2 class="region-title">🚣 Lower Zambezi Lodge</h2>
+      <p class="region-subtitle">Riverside safari lodges with adventure activities</p>
+      <div class="hotel-grid" id="lowerZambeziGrid"></div>
+    </div>
+
+    <!-- KAFUE HOTELS -->
+    <div class="region-section">
+      <h2 class="region-title">🌿 Kafue National Park</h2>
+      <p class="region-subtitle">Remote safari camps and exclusive luxury lodges</p>
+      <div class="hotel-grid" id="kafueGrid"></div>
+    </div>
+
+    <!-- SIAVONGA HOTELS -->
+    <div class="region-section">
+      <h2 class="region-title">🏖️ Siavonga</h2>
+      <p class="region-subtitle">Lakeside resorts and water-based recreation</p>
+      <div class="hotel-grid" id="siavongaGrid"></div>
+    </div>
+
+    <!-- SAMFYA HOTELS -->
+    <div class="region-section">
+      <h2 class="region-title">🌍 Samfya / Northern Circuit</h2>
+      <p class="region-subtitle">Remote lodges and waterfront resorts</p>
+      <div class="hotel-grid" id="samfyaGrid"></div>
+    </div>
   </section>
 
-  <div id="hotelModal" class="modal">
+  <!-- BOOKING MODAL -->
+  <div id="bookingModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2 class="modal-title" id="modalHotelName"></h2>
-      <div class="modal-gallery" id="modalGallery"></div>
-      <div class="modal-info">
-        <label>Location</label>
-        <p id="modalLocation"></p>
-        <label>Description</label>
-        <p id="modalDescription"></p>
-        <label>Amenities</label>
-        <div id="modalAmenities" class="modal-features"></div>
-        <label>Price per Night</label>
-        <p style="font-size: 24px; color: gold; font-weight: 700;" id="modalPrice"></p>
-        <label>Rating</label>
-        <p id="modalRating" style="color: gold; font-weight: 600;"></p>
+      <span class="close-modal" onclick="closeBookingModal()">&times;</span>
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalHotelName"></h2>
+        <p class="modal-subtitle" id="modalHotelLocation"></p>
       </div>
+      <img id="modalHotelImage" class="modal-image" alt="Hotel Image">
+      
+      <div class="hotel-details">
+        <div class="detail-section">
+          <h4>About This Hotel</h4>
+          <p id="modalDescription"></p>
+        </div>
+
+        <div class="detail-section">
+          <h4>Amenities</h4>
+          <ul id="modalAmenities"></ul>
+        </div>
+
+        <div class="detail-section">
+          <h4>Room Types</h4>
+          <ul id="modalRoomTypes"></ul>
+        </div>
+
+        <div class="detail-section">
+          <h4>Pricing</h4>
+          <p id="modalPricing" style="font-size: 18px; color: gold; font-weight: 700;"></p>
+        </div>
+      </div>
+
       <div class="booking-form">
-        <h3 style="margin-bottom: 15px;">Book Your Stay</h3>
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" placeholder="Enter your name" />
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="Enter your email" />
-        </div>
-        <div class="form-group">
-          <label>Check-in Date</label>
-          <input type="date" />
-        </div>
-        <div class="form-group">
-          <label>Check-out Date</label>
-          <input type="date" />
-        </div>
-        <div class="form-group">
-          <label>Room Type</label>
-          <select>
-            <option>Single Room</option>
-            <option>Double Room</option>
-            <option>Suite</option>
-            <option>Deluxe Suite</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Special Requests</label>
-          <textarea style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Poppins', sans-serif;" rows="4" placeholder="Any special requests?"></textarea>
-        </div>
-        <button class="submit-btn" onclick="submitBooking()">Confirm Booking</button>
+        <h4 style="margin-bottom: 15px;">Reserve Your Stay</h4>
+        <form onsubmit="submitBooking(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Check-in Date</label>
+              <input type="date" id="checkIn" required>
+            </div>
+            <div class="form-group">
+              <label>Check-out Date</label>
+              <input type="date" id="checkOut" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Number of Guests</label>
+              <select id="guests" required>
+                <option value="">Select guests</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5+">5+ Guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Room Type</label>
+              <select id="roomType" required>
+                <option value="">Select room type</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Special Requests</label>
+            <textarea rows="3" placeholder="Any special requests or preferences?"></textarea>
+          </div>
+
+          <button type="submit" class="booking-submit">Confirm Reservation</button>
+        </form>
       </div>
     </div>
   </div>
 
-
-
-</section>
-
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>About Top Travel Planners and Tours Zambia</h3>
-        <p>We are Zambia's leading tour and travel company, dedicated to creating unforgettable adventures across the beautiful landscapes of Zambia.</p>
+    <div class="footer-grid">
+      <div class="footer-box">
+        <h3>Top Travel Planners and Tours Zambia</h3>
+        <p>Luxury tourism and premium travel experiences across Africa and worldwide.</p>
+        <p><strong>Email:</strong> res.toptravelplannerszambia@gmail.com</p>
+        <p><strong>Phone:</strong> +260 771 464 228</p>
       </div>
-      <div class="footer-section">
+      <div class="footer-box">
         <h3>Quick Links</h3>
-        <a href="index.html">Home</a><br>
-        <a href="destinations.html">Destinations</a><br>
-        <a href="packages.html">Packages</a><br>
-        <a href="contact.html">Contact</a>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="safaris.html">Safaris</a></li>
+          <li><a href="flights.html">Flights</a></li>
+          <li><a href="hotels.html">Hotels</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="membership.html">Membership</a></li>
+        </ul>
       </div>
-      <div class="footer-section">
-        <h3>Contact Info</h3>
-        <p>📞 +260 77146218<br>
-        📧 res.toptravelplannerszambia@gmail.com<br>
-        📍  Lusaka, Zambia</p>
+      <div class="footer-box">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="flights.html">Flight Booking</a></li>
+          <li><a href="hotels.html">Hotel Booking</a></li>
+          <li><a href="services.html">Visa Assistance</a></li>
+          <li><a href="safaris.html">Luxury Tours</a></li>
+        </ul>
       </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <p>
-          <a href="#">Facebook</a><br>
-          <a href="#">Instagram</a><br>
-          <a href="#">Twitter</a><br>
-          <a href="#">WhatsApp</a>
-        </p>
+      <div class="footer-box">
+        <h3>Social Media</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="https://wa.me/260771464228" target="_blank">WhatsApp</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Top Travel Planners and Tours Zambia. All rights reserved.</p>
+      <p>© 2026 Top Travel Planners and Tours Zambia. All Rights Reserved.</p>
     </div>
   </footer>
 
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/260771464228" class="whatsapp">
+    💬
+  </a>
+
+  <!-- BOOK NOW BUTTON -->
+  <a href="packages.html" class="book-now-btn">
+    Book<br>Now
+  </a>
+
+  <script src="js/script.js"></script>
   <script>
-    window.addEventListener('load', function() {
-      document.getElementById('preloader').style.display = 'none';
+    // Hotels Database
+    const hotels = {
+      lusaka: [
+        {
+          id: 1,
+          name: "Cargo 88 Hotel",
+          location: "Lusaka",
+          region: "lusaka",
+          image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
+          category: "4-Star Hotel",
+          description: "Modern luxury hotel offering premium accommodation and excellent hospitality in the heart of Lusaka. Perfect for business travelers and leisure guests seeking comfort and convenience.",
+          price: "From $150/night",
+          priceRange: "moderate",
+          rating: 4.6,
+          amenities: ["Free WiFi", "Restaurant & Bar", "Gym", "Business Center", "Airport Transfer", "24/7 Room Service"],
+          roomTypes: ["Standard Room", "Deluxe Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 2,
+          name: "Chaminuka Lodge",
+          location: "Lusaka",
+          region: "lusaka",
+          image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=800&auto=format&fit=crop",
+          category: "Luxury Lodge",
+          description: "Luxury lodge surrounded by lush nature with wildlife experiences and beautiful landscapes. An oasis of tranquility in the city, offering personalized service and gourmet dining.",
+          price: "From $220/night",
+          priceRange: "luxury",
+          rating: 4.8,
+          amenities: ["Spa", "Wildlife Viewing", "Fine Dining", "Infinity Pool", "Concierge", "Private Gardens"],
+          roomTypes: ["Garden Room", "Suite", "Villa"],
+          availability: "Limited"
+        },
+        {
+          id: 3,
+          name: "M'kango Golf View Hotel",
+          location: "Lusaka",
+          region: "lusaka",
+          image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=800&auto=format&fit=crop",
+          category: "Resort Hotel",
+          description: "Elegant golf-view accommodation with peaceful surroundings and modern comfort. Ideal for golf enthusiasts and those seeking a serene retreat with excellent facilities.",
+          price: "From $180/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Golf Course Access", "Restaurant", "Lounge Bar", "Tennis Court", "Conference Room", "Parking"],
+          roomTypes: ["Standard Room", "Deluxe Room", "Penthouse"],
+          availability: "Available"
+        },
+        {
+          id: 4,
+          name: "Protea Hotels",
+          location: "Lusaka",
+          region: "lusaka",
+          image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=800&auto=format&fit=crop",
+          category: "International Hotel",
+          description: "International-standard hotel offering business and leisure accommodation with world-class facilities. Perfect base for exploring Lusaka with efficient service.",
+          price: "From $140/night",
+          priceRange: "moderate",
+          rating: 4.4,
+          amenities: ["Business Center", "Restaurant", "Gym", "Swimming Pool", "Room Service", "Laundry"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 5,
+          name: "Southern Sun Hotel",
+          location: "Lusaka",
+          region: "lusaka",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+          category: "Upscale Hotel",
+          description: "Contemporary upscale hotel featuring modern amenities and warm hospitality. Conveniently located near shopping and entertainment centers.",
+          price: "From $160/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["WiFi", "Restaurant", "Bar", "Gym", "Conference Facilities", "Valet Parking"],
+          roomTypes: ["Standard Room", "Deluxe Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 6,
+          name: "Holiday Inn Hotel",
+          location: "Lusaka",
+          region: "lusaka",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop",
+          category: "4-Star Hotel",
+          description: "Familiar comfort of the Holiday Inn brand with excellent customer service. Ideal for both business and leisure travelers seeking reliable quality.",
+          price: "From $155/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Free WiFi", "Restaurant", "Fitness Center", "Business Lounge", "Room Service", "Event Space"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 7,
+          name: "InterContinental Hotel",
+          location: "Lusaka",
+          region: "lusaka",
+          image: "https://images.unsplash.com/photo-1566645536466-917ec4fb8f35?q=80&w=800&auto=format&fit=crop",
+          category: "Luxury Hotel",
+          description: "Premium luxury accommodation with impeccable service standards. The ultimate choice for discerning travelers seeking the finest hospitality.",
+          price: "From $280/night",
+          priceRange: "ultra",
+          rating: 4.9,
+          amenities: ["Michelin Restaurant", "Spa", "Fitness Center", "Pool", "Concierge", "Premium WiFi"],
+          roomTypes: ["Suite", "Presidential Suite", "Penthouse"],
+          availability: "Available"
+        }
+      ],
+      livingstone: [
+        {
+          id: 8,
+          name: "Radisson Blu Hotel",
+          location: "Livingstone",
+          region: "livingstone",
+          image: "https://images.unsplash.com/photo-1455587734955-081b22074882?q=80&w=800&auto=format&fit=crop",
+          category: "Luxury Hotel",
+          description: "Luxury riverside hotel near Victoria Falls with exceptional comfort and style. Wake up to stunning sunrise views over the Zambezi River.",
+          price: "From $250/night",
+          priceRange: "luxury",
+          rating: 4.8,
+          amenities: ["River View", "Restaurant", "Spa", "Infinity Pool", "Safari Tours", "Concierge"],
+          roomTypes: ["Deluxe Room", "Suite", "Presidential Suite"],
+          availability: "Available"
+        },
+        {
+          id: 9,
+          name: "Avani Hotel",
+          location: "Livingstone",
+          region: "livingstone",
+          image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop",
+          category: "Family Resort",
+          description: "Family-friendly luxury accommodation close to Zambia's iconic attractions. Perfect for families and groups seeking comfort and adventure.",
+          price: "From $200/night",
+          priceRange: "luxury",
+          rating: 4.7,
+          amenities: ["Family Suites", "Kids Club", "Restaurant", "Pool", "Activity Desk", "Parking"],
+          roomTypes: ["Family Room", "Suite", "Villa"],
+          availability: "Available"
+        },
+        {
+          id: 10,
+          name: "David Livingstone Hotel",
+          location: "Livingstone",
+          region: "livingstone",
+          image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=800&auto=format&fit=crop",
+          category: "Heritage Hotel",
+          description: "Elegant riverfront hotel with breathtaking sunset views and luxury rooms. Rich in history and character, offering authentic African hospitality.",
+          price: "From $190/night",
+          priceRange: "luxury",
+          rating: 4.6,
+          amenities: ["River Views", "Restaurant", "Bar", "Sunset Terrace", "Guided Tours", "Boutique"],
+          roomTypes: ["Standard Room", "Deluxe Room", "Honeymoon Suite"],
+          availability: "Available"
+        },
+        {
+          id: 11,
+          name: "Maramba River Lodge",
+          location: "Livingstone",
+          region: "livingstone",
+          image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+          category: "Adventure Lodge",
+          description: "Riverside lodge dedicated to adventure activities. Perfect for thrill-seekers and nature lovers exploring Victoria Falls.",
+          price: "From $170/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Adventure Tours", "Restaurant", "River Access", "Activity Center", "Parking", "WiFi"],
+          roomTypes: ["Standard Room", "Cottage"],
+          availability: "Available"
+        },
+        {
+          id: 12,
+          name: "Waterfront Lodge",
+          location: "Livingstone",
+          region: "livingstone",
+          image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop",
+          category: "Boutique Lodge",
+          description: "Intimate waterfront lodge with personalized service. Experience Livingstone's beauty from your private balcony.",
+          price: "From $210/night",
+          priceRange: "luxury",
+          rating: 4.7,
+          amenities: ["Water Activities", "Restaurant", "Private Deck", "Massage", "Concierge", "Tours"],
+          roomTypes: ["Cabin", "Suite"],
+          availability: "Limited"
+        },
+        {
+          id: 13,
+          name: "Zambezi Junction Hotel",
+          location: "Livingstone",
+          region: "livingstone",
+          image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
+          category: "Convenient Hotel",
+          description: "Central location hotel perfect for tourists exploring Victoria Falls. Walking distance to major attractions and dining.",
+          price: "From $140/night",
+          priceRange: "moderate",
+          rating: 4.4,
+          amenities: ["Central Location", "Restaurant", "Bar", "Tour Desk", "Parking", "WiFi"],
+          roomTypes: ["Standard Room", "Deluxe Room"],
+          availability: "Available"
+        },
+        {
+          id: 14,
+          name: "Protea Hotel Livingstone",
+          location: "Livingstone",
+          region: "livingstone",
+          image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=800&auto=format&fit=crop",
+          category: "4-Star Hotel",
+          description: "Reliable 4-star accommodation with excellent amenities. Ideal base for Victoria Falls exploration.",
+          price: "From $150/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Restaurant", "Conference Room", "Fitness Center", "Lounge", "Room Service", "Parking"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        }
+      ],
+      southLuangwa: [
+        {
+          id: 15,
+          name: "Mfuwe Lodge Bush Camp",
+          location: "South Luangwa National Park",
+          region: "south-luangwa",
+          image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
+          category: "Safari Camp",
+          description: "Premium safari lodge offering authentic wildlife experiences and luxury accommodation. Expert guides ensure unforgettable encounters with African wildlife.",
+          price: "From $300/night",
+          priceRange: "luxury",
+          rating: 4.9,
+          amenities: ["Safari Drives", "Walking Safaris", "Restaurant", "Bar", "Campfire", "Photography Support"],
+          roomTypes: ["Tented Room", "Suite", "Honeymoon Tent"],
+          availability: "Available"
+        },
+        {
+          id: 16,
+          name: "Kukaya Lodge",
+          location: "South Luangwa National Park",
+          region: "south-luangwa",
+          image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=800&auto=format&fit=crop",
+          category: "Luxury Bush Lodge",
+          description: "Luxury bush lodge ideal for safari lovers exploring South Luangwa. Intimate setting with exceptional service.",
+          price: "From $350/night",
+          priceRange: "ultra",
+          rating: 4.9,
+          amenities: ["Private Safari Guides", "Gourmet Dining", "Spa", "Pool", "Library", "Game Drives"],
+          roomTypes: ["Suite", "Villa"],
+          availability: "Limited"
+        },
+        {
+          id: 17,
+          name: "Croc Valley",
+          location: "South Luangwa National Park",
+          region: "south-luangwa",
+          image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop",
+          category: "Safari Camp",
+          description: "Rustic safari camp along the Luangwa River. Experience wildlife in its natural habitat with expert naturalist guides.",
+          price: "From $220/night",
+          priceRange: "luxury",
+          rating: 4.6,
+          amenities: ["River Activities", "Game Drives", "Walking Safaris", "Restaurant", "Campfire Dinners", "WiFi"],
+          roomTypes: ["Tented Room", "Cottage"],
+          availability: "Available"
+        },
+        {
+          id: 18,
+          name: "Wildlife Lodge",
+          location: "South Luangwa National Park",
+          region: "south-luangwa",
+          image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop",
+          category: "Budget Safari Lodge",
+          description: "Excellent value safari lodge with quality service. Perfect for budget-conscious travelers seeking authentic safari experience.",
+          price: "From $140/night",
+          priceRange: "moderate",
+          rating: 4.4,
+          amenities: ["Game Drives", "Walking Safaris", "Dining Hall", "Observation Deck", "Parking", "WiFi"],
+          roomTypes: ["Standard Room", "Double Room"],
+          availability: "Available"
+        },
+        {
+          id: 19,
+          name: "Kafunta Lodge",
+          location: "South Luangwa National Park",
+          region: "south-luangwa",
+          image: "https://images.unsplash.com/photo-1495012413033-a3f90be8e6f5?q=80&w=800&auto=format&fit=crop",
+          category: "Exclusive Lodge",
+          description: "Exclusive safari lodge with stunning views and luxury rooms. Perfect for those seeking premium safari experience.",
+          price: "From $320/night",
+          priceRange: "ultra",
+          rating: 4.8,
+          amenities: ["Exclusive Safari Access", "Gourmet Chef", "Infinity Pool", "Spa", "Private Guides", "Luxury Amenities"],
+          roomTypes: ["Suite", "Villa", "Presidential Suite"],
+          availability: "Available"
+        },
+        {
+          id: 20,
+          name: "Mopani Lodge",
+          location: "South Luangwa National Park",
+          region: "south-luangwa",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop",
+          category: "Mid-Range Safari",
+          description: "Mid-range safari lodge with excellent wildlife viewing. Comfortable accommodation at reasonable prices.",
+          price: "From $180/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Game Drives", "Restaurant", "Bar", "Observation Tower", "Parking", "Tours"],
+          roomTypes: ["Standard Room", "Deluxe Room"],
+          availability: "Available"
+        },
+        {
+          id: 21,
+          name: "Thorncroft Lodge",
+          location: "South Luangwa National Park",
+          region: "south-luangwa",
+          image: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?q=80&w=800&auto=format&fit=crop",
+          category: "Premium Safari",
+          description: "Premium safari lodge with exceptional wildlife encounters. Specialized guides for photography and birding.",
+          price: "From $280/night",
+          priceRange: "luxury",
+          rating: 4.7,
+          amenities: ["Photography Guides", "Birding Specialist", "Gourmet Dining", "Pool", "WiFi", "Safari Drives"],
+          roomTypes: ["Suite", "Honeymoon Suite"],
+          availability: "Available"
+        }
+      ],
+      lowerZambezi: [
+        {
+          id: 22,
+          name: "Royal Zambezi Lodge",
+          location: "Lower Zambezi",
+          region: "lower-zambezi",
+          image: "https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=800&auto=format&fit=crop",
+          category: "Luxury River Lodge",
+          description: "Luxury riverside safari lodge offering unforgettable wildlife and fishing experiences. Combine adventure with comfort.",
+          price: "From $340/night",
+          priceRange: "ultra",
+          rating: 4.9,
+          amenities: ["Fishing", "Canoe Safaris", "Game Drives", "Gourmet Dining", "Spa", "Sunset Cruises"],
+          roomTypes: ["Suite", "Luxury Villa"],
+          availability: "Limited"
+        },
+        {
+          id: 23,
+          name: "Baine's River Lodge",
+          location: "Lower Zambezi",
+          region: "lower-zambezi",
+          image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop",
+          category: "Boutique Lodge",
+          description: "Elegant safari lodge located along the beautiful Zambezi River. Intimate setting perfect for couples.",
+          price: "From $280/night",
+          priceRange: "luxury",
+          rating: 4.8,
+          amenities: ["River Activities", "Walking Safaris", "Restaurant", "Bar", "Observation Deck", "Tours"],
+          roomTypes: ["Deluxe Room", "Suite", "Honeymoon Suite"],
+          availability: "Available"
+        },
+        {
+          id: 24,
+          name: "Gwabi River Lodge",
+          location: "Lower Zambezi",
+          region: "lower-zambezi",
+          image: "https://images.unsplash.com/photo-1495012413033-a3f90be8e6f5?q=80&w=800&auto=format&fit=crop",
+          category: "Adventure Lodge",
+          description: "Adventure-focused lodge with excellent activity options. Perfect for active travelers seeking thrills.",
+          price: "From $240/night",
+          priceRange: "luxury",
+          rating: 4.6,
+          amenities: ["White Water Rafting", "Fishing", "Kayaking", "Game Drives", "Restaurant", "Parking"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 25,
+          name: "Nsofu Lodge",
+          location: "Lower Zambezi",
+          region: "lower-zambezi",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop",
+          category: "Intimate Lodge",
+          description: "Small intimate lodge with personalized service. Exclusive experience for selective travelers.",
+          price: "From $200/night",
+          priceRange: "luxury",
+          rating: 4.7,
+          amenities: ["Private Guides", "Fine Dining", "River Access", "WiFi", "Concierge", "Activities"],
+          roomTypes: ["Cottage", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 26,
+          name: "Nuyanaya River Lodge",
+          location: "Lower Zambezi",
+          region: "lower-zambezi",
+          image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop",
+          category: "Safari Lodge",
+          description: "Riverside safari lodge combining comfort with authentic African experience. Excellent for nature lovers.",
+          price: "From $220/night",
+          priceRange: "luxury",
+          rating: 4.6,
+          amenities: ["Fishing", "Boating", "Game Drives", "Restaurant", "Bar", "Tours"],
+          roomTypes: ["Tented Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 27,
+          name: "Greenpark Fishing and Safari Lodge",
+          location: "Lower Zambezi",
+          region: "lower-zambezi",
+          image: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?q=80&w=800&auto=format&fit=crop",
+          category: "Specialist Lodge",
+          description: "Specialized fishing and safari lodge for dedicated anglers. World-class fishing grounds combined with game viewing.",
+          price: "From $260/night",
+          priceRange: "luxury",
+          rating: 4.7,
+          amenities: ["Expert Fishing Guides", "Game Drives", "Tackle Available", "Restaurant", "Drying Room", "WiFi"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        }
+      ],
+      kafue: [
+        {
+          id: 28,
+          name: "Mukambi Safari Lodge",
+          location: "Kafue National Park",
+          region: "kafue",
+          image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop",
+          category: "Premium Safari Lodge",
+          description: "Excellent premium safari lodge with quality service and wildlife viewing. One of Zambia's premier safari destinations.",
+          price: "From $310/night",
+          priceRange: "ultra",
+          rating: 4.8,
+          amenities: ["Expert Guides", "Game Drives", "Walking Safaris", "Restaurant", "Pool", "WiFi"],
+          roomTypes: ["Suite", "Luxury Suite", "Villa"],
+          availability: "Limited"
+        },
+        {
+          id: 29,
+          name: "Figtree Bush Camp",
+          location: "Kafue National Park",
+          region: "kafue",
+          image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop",
+          category: "Bush Camp",
+          description: "Authentic bush camp experience with excellent wildlife viewing. Intimate setting for safari enthusiasts.",
+          price: "From $200/night",
+          priceRange: "luxury",
+          rating: 4.6,
+          amenities: ["Game Drives", "Walking Safaris", "Campfire Dinners", "Bar", "Observation Deck", "Tours"],
+          roomTypes: ["Tented Room", "Cottage"],
+          availability: "Available"
+        },
+        {
+          id: 30,
+          name: "Konkamoya Lodge Kafue River",
+          location: "Kafue National Park",
+          region: "kafue",
+          image: "https://images.unsplash.com/photo-1495012413033-a3f90be8e6f5?q=80&w=800&auto=format&fit=crop",
+          category: "Riverside Lodge",
+          description: "Riverside lodge with excellent game viewing. Perfect for fishing and wildlife photography.",
+          price: "From $240/night",
+          priceRange: "luxury",
+          rating: 4.7,
+          amenities: ["Fishing", "Game Drives", "Restaurant", "Bar", "Photography Deck", "WiFi"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 31,
+          name: "Mayukuyuku Lodge",
+          location: "Kafue National Park",
+          region: "kafue",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop",
+          category: "Exclusive Lodge",
+          description: "Exclusive lodge offering premium safari experience. Limited guest numbers ensure intimate wildlife encounters.",
+          price: "From $330/night",
+          priceRange: "ultra",
+          rating: 4.9,
+          amenities: ["Private Guides", "Gourmet Dining", "Spa", "Pool", "Luxury Amenities", "Concierge"],
+          roomTypes: ["Suite", "Villa"],
+          availability: "Limited"
+        },
+        {
+          id: 32,
+          name: "Ila Safari Lodge",
+          location: "Kafue National Park",
+          region: "kafue",
+          image: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?q=80&w=800&auto=format&fit=crop",
+          category: "Mid-Range Safari",
+          description: "Mid-range safari lodge with good value. Excellent for experiencing Kafue's wildlife without premium pricing.",
+          price: "From $160/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Game Drives", "Restaurant", "Bar", "Observation Tower", "Parking", "Tours"],
+          roomTypes: ["Standard Room", "Deluxe Room"],
+          availability: "Available"
+        },
+        {
+          id: 33,
+          name: "Mozhi Bush Camp",
+          location: "Kafue National Park",
+          region: "kafue",
+          image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop",
+          category: "Bush Camp",
+          description: "Rustic bush camp with authentic safari atmosphere. Perfect for adventurous travelers.",
+          price: "From $180/night",
+          priceRange: "moderate",
+          rating: 4.4,
+          amenities: ["Game Drives", "Walking Safaris", "Campfire", "Basic Restaurant", "Guides", "WiFi"],
+          roomTypes: ["Tented Room", "Cabin"],
+          availability: "Available"
+        },
+        {
+          id: 34,
+          name: "Anantara Tented Camp",
+          location: "Kafue National Park",
+          region: "kafue",
+          image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop",
+          category: "Luxury Tented Camp",
+          description: "Luxury tented camp combining comfort with authentic bush experience. Premium amenities in the African wilderness.",
+          price: "From $380/night",
+          priceRange: "ultra",
+          rating: 4.9,
+          amenities: ["Luxury Tents", "Gourmet Dining", "Spa", "Private Guides", "Sunset Cruises", "Concierge"],
+          roomTypes: ["Deluxe Tent", "Presidential Tent"],
+          availability: "Limited"
+        }
+      ],
+      siavonga: [
+        {
+          id: 35,
+          name: "Lake Kariba Inn Lodge",
+          location: "Siavonga",
+          region: "siavonga",
+          image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+          category: "Lakeside Resort",
+          description: "Lakeside lodge with excellent water-based activities. Perfect for water sports enthusiasts and relaxation seekers.",
+          price: "From $140/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Water Sports", "Fishing", "Restaurant", "Bar", "Beach Access", "Parking"],
+          roomTypes: ["Standard Room", "Deluxe Room"],
+          availability: "Available"
+        },
+        {
+          id: 36,
+          name: "Safari Lodge Siavonga",
+          location: "Siavonga",
+          region: "siavonga",
+          image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop",
+          category: "Safari Resort",
+          description: "Safari-themed resort with water activities. Unique combination of safari and water-based experiences.",
+          price: "From $170/night",
+          priceRange: "moderate",
+          rating: 4.4,
+          amenities: ["Game Viewing", "Fishing", "Restaurant", "Pool", "Tours", "WiFi"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 37,
+          name: "Savee Beach Resort Lodge",
+          location: "Siavonga",
+          region: "siavonga",
+          image: "https://images.unsplash.com/photo-1495012413033-a3f90be8e6f5?q=80&w=800&auto=format&fit=crop",
+          category: "Beach Resort",
+          description: "Beautiful beach resort with sandy shores and water activities. Ideal for family vacations.",
+          price: "From $150/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Beach Access", "Water Sports", "Restaurant", "Bar", "Kids Area", "WiFi"],
+          roomTypes: ["Standard Room", "Family Room"],
+          availability: "Available"
+        },
+        {
+          id: 38,
+          name: "Kariba Sunset Villa Lodge",
+          location: "Siavonga",
+          region: "siavonga",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop",
+          category: "Luxury Villas",
+          description: "Luxury villa accommodation with spectacular sunset views. Perfect for special occasions and luxury retreats.",
+          price: "From $280/night",
+          priceRange: "luxury",
+          rating: 4.7,
+          amenities: ["Private Villas", "Lake View", "Fine Dining", "Spa", "Sunset Deck", "Concierge"],
+          roomTypes: ["Villa", "Presidential Villa"],
+          availability: "Limited"
+        }
+      ],
+      samfya: [
+        {
+          id: 39,
+          name: "Bangweulu Beach Front Village",
+          location: "Samfya / Northern Circuit",
+          region: "samfya",
+          image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop",
+          category: "Beach Village",
+          description: "Remote beach front village with authentic local experience. Perfect for adventurous travelers seeking off-beaten paths.",
+          price: "From $110/night",
+          priceRange: "budget",
+          rating: 4.3,
+          amenities: ["Beach Access", "Fishing", "Restaurant", "Local Tours", "Guides", "WiFi"],
+          roomTypes: ["Standard Room", "Cottage"],
+          availability: "Available"
+        },
+        {
+          id: 40,
+          name: "Chita Lodge",
+          location: "Samfya / Northern Circuit",
+          region: "samfya",
+          image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop",
+          category: "Waterfront Lodge",
+          description: "Waterfront lodge with excellent fishing opportunities. Remote location perfect for nature lovers.",
+          price: "From $130/night",
+          priceRange: "moderate",
+          rating: 4.4,
+          amenities: ["Fishing", "Boating", "Restaurant", "Bar", "Tours", "WiFi"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 41,
+          name: "Sali Lodge",
+          location: "Samfya / Northern Circuit",
+          region: "samfya",
+          image: "https://images.unsplash.com/photo-1495012413033-a3f90be8e6f5?q=80&w=800&auto=format&fit=crop",
+          category: "Remote Lodge",
+          description: "Remote lodge offering authentic African experience. Ideal for adventurers and nature enthusiasts.",
+          price: "From $100/night",
+          priceRange: "budget",
+          rating: 4.2,
+          amenities: ["Basic Amenities", "Local Guides", "Restaurant", "Activities", "Parking", "WiFi"],
+          roomTypes: ["Standard Room"],
+          availability: "Available"
+        },
+        {
+          id: 42,
+          name: "Samfya Waterfront Lodge",
+          location: "Samfya / Northern Circuit",
+          region: "samfya",
+          image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop",
+          category: "Waterfront Resort",
+          description: "Waterfront resort with various water activities. Good value for money with decent amenities.",
+          price: "From $120/night",
+          priceRange: "moderate",
+          rating: 4.4,
+          amenities: ["Water Sports", "Fishing", "Restaurant", "Bar", "Tours", "WiFi"],
+          roomTypes: ["Standard Room", "Deluxe Room"],
+          availability: "Available"
+        },
+        {
+          id: 43,
+          name: "Ndole Bay Lodge",
+          location: "Samfya / Northern Circuit",
+          region: "samfya",
+          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop",
+          category: "Bay Resort",
+          description: "Scenic bay resort with water-based activities. Remote and tranquil setting for relaxation.",
+          price: "From $140/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Bay View", "Fishing", "Boating", "Restaurant", "WiFi", "Tours"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        },
+        {
+          id: 44,
+          name: "Isanga Bay Resort",
+          location: "Samfya / Northern Circuit",
+          region: "samfya",
+          image: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?q=80&w=800&auto=format&fit=crop",
+          category: "Bay Resort",
+          description: "Scenic bay resort with comfortable accommodation. Perfect for experiencing northern Zambia.",
+          price: "From $160/night",
+          priceRange: "moderate",
+          rating: 4.5,
+          amenities: ["Bay Access", "Fishing", "Restaurant", "Bar", "Activities", "WiFi"],
+          roomTypes: ["Standard Room", "Deluxe Room"],
+          availability: "Available"
+        },
+        {
+          id: 45,
+          name: "Shiwa Ngandu Resort",
+          location: "Samfya / Northern Circuit",
+          region: "samfya",
+          image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop",
+          category: "Heritage Resort",
+          description: "Heritage resort near historic Shiwa estate. Unique combination of history and nature.",
+          price: "From $180/night",
+          priceRange: "moderate",
+          rating: 4.6,
+          amenities: ["Heritage Tours", "Restaurant", "Bar", "Guided Tours", "WiFi", "Activities"],
+          roomTypes: ["Standard Room", "Suite"],
+          availability: "Available"
+        }
+      ]
+    };
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      displayAllHotels();
     });
 
-    const hotels = [
-      {
-        id: 1,
-        name: 'Victoria Falls Safari Lodge',
-        location: 'Livingstone',
-        category: 'luxury',
-        price: 350,
-        rating: 4.8,
-        description: 'Luxurious lodge overlooking Victoria Falls with world-class amenities and spectacular views.',
-        images: ['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500', 'https://images.unsplash.com/photo-1571896349842-f88407ed43a0?w=500', 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=500'],
-        amenities: ['WiFi', 'Pool', 'Restaurant', 'Spa', 'Gym', 'Bar'],
-        fullDescription: 'Experience luxury at its finest at Victoria Falls Safari Lodge. This stunning property combines modern comfort with authentic African charm, offering breathtaking views of one of the world\'s most iconic natural wonders. Our expert staff ensures every moment of your stay is memorable.'
-      },
-      {
-        id: 2,
-        name: 'Lusaka Grand Hotel',
-        location: 'Lusaka',
-        category: 'luxury',
-        price: 280,
-        rating: 4.6,
-        description: 'Premium business hotel in the heart of Lusaka with state-of-the-art facilities.',
-        images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500', 'https://images.unsplash.com/photo-1571019613454-c02efd72f54d?w=500', 'https://images.unsplash.com/photo-1561501900-d3fee92d55bb?w=500'],
-        amenities: ['WiFi', 'Gym', 'Business Center', 'Restaurant', 'Bar', 'Conference Rooms'],
-        fullDescription: 'Lusaka Grand Hotel is the perfect choice for business travelers and leisure guests alike. Located in the prime business district, we offer world-class services and modern amenities.'
-      },
-      {
-        id: 3,
-        name: 'South Luangwa National Park Lodge',
-        location: 'South Luangwa',
-        category: 'mid-range',
-        price: 200,
-        rating: 4.5,
-        description: 'Scenic lodge within national park with incredible wildlife viewing opportunities.',
-        images: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500', 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=500', 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500'],
-        amenities: ['Safari Tours', 'Restaurant', 'Bar', 'WiFi', 'Nature Walks', 'Photography Tours'],
-        fullDescription: 'Immerse yourself in nature at South Luangwa National Park Lodge. Experience authentic safari adventures with expert guides and comfortable accommodations designed for wildlife enthusiasts.'
-      },
-      {
-        id: 4,
-        name: 'Ndola City Hotel',
-        location: 'Ndola',
-        category: 'mid-range',
-        price: 150,
-        rating: 4.3,
-        description: 'Comfortable mid-range hotel in Ndola with excellent service and competitive rates.',
-        images: ['https://images.unsplash.com/photo-1470093851033-69607e97aabc?w=500', 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=500', 'https://images.unsplash.com/photo-1435527173128-78a1e2e872da?w=500'],
-        amenities: ['WiFi', 'Restaurant', 'Bar', 'Room Service', 'Parking', 'Meeting Rooms'],
-        fullDescription: 'Ndola City Hotel offers comfortable and convenient accommodations in the heart of Ndola\'s business district. Perfect for corporate travelers and leisure visitors.'
-      },
-      {
-        id: 5,
-        name: 'Lower Zambezi River Lodge',
-        location: 'Lower Zambezi',
-        category: 'luxury',
-        price: 400,
-        rating: 4.9,
-        description: 'Exclusive riverside lodge offering premium safari and water adventure experiences.',
-        images: ['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500', 'https://images.unsplash.com/photo-1510332649841-f8ec266b6fbb?w=500'],
-        amenities: ['Private Safari', 'Boat Tours', 'Fishing', 'Fine Dining', 'Spa', 'Wildlife Photography'],
-        fullDescription: 'Experience ultimate luxury along the Lower Zambezi River. This exclusive lodge offers world-class accommodations and unforgettable safari adventures in one of Africa\'s most pristine wilderness areas.'
-      },
-      {
-        id: 6,
-        name: 'Budget Inn Livingstone',
-        location: 'Livingstone',
-        category: 'budget',
-        price: 80,
-        rating: 4.1,
-        description: 'Affordable and cheerful accommodation near Victoria Falls.',
-        images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500', 'https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?w=500', 'https://images.unsplash.com/photo-1465146072230-91cabc968266?w=500'],
-        amenities: ['WiFi', 'Shared Kitchen', 'Common Lounge', 'Tours Desk', 'Backpacker Friendly'],
-        fullDescription: 'Budget Inn Livingstone provides comfortable and affordable accommodations for backpackers and budget travelers. Great location near Victoria Falls and local attractions.'
-      },
-      {
-        id: 7,
-        name: 'Lusaka Eco Hotel',
-        location: 'Lusaka',
-        category: 'mid-range',
-        price: 160,
-        rating: 4.4,
-        description: 'Sustainable hotel with eco-friendly practices and modern comfort.',
-        images: ['https://images.unsplash.com/photo-1512207736139-ca32097e6b9a?w=500', 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500', 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500'],
-        amenities: ['Eco-Friendly', 'Organic Restaurant', 'WiFi', 'Gym', 'Garden', 'Meeting Rooms'],
-        fullDescription: 'Stay sustainably at Lusaka Eco Hotel. We combine environmental responsibility with comfortable accommodations, offering guests a guilt-free luxury experience.'
-      },
-      {
-        id: 8,
-        name: 'Ndola Premier Resort',
-        location: 'Ndola',
-        category: 'luxury',
-        price: 320,
-        rating: 4.7,
-        description: 'Upscale resort with comprehensive facilities and entertainment options.',
-        images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500', 'https://images.unsplash.com/photo-1571019613454-c02efd72f54d?w=500'],
-        amenities: ['Pool', 'Spa', 'Nightclub', 'Casino', 'Multiple Restaurants', 'Conference Center'],
-        fullDescription: 'Ndola Premier Resort is a premier destination for both business and leisure travelers, offering luxury accommodations and world-class entertainment facilities.'
-      },
-      {
-        id: 9,
-        name: 'Safari Budget Camp',
-        location: 'South Luangwa',
-        category: 'budget',
-        price: 90,
-        rating: 4.2,
-        description: 'Adventure-focused budget accommodation near wildlife reserves.',
-        images: ['https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500', 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500', 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=500'],
-        amenities: ['Safari Tours', 'Budget Cabins', 'Campfire', 'Guides Included', 'Adventure Activities'],
-        fullDescription: 'Safari Budget Camp offers authentic adventure experiences at affordable prices. Perfect for adventurous travelers wanting to explore Zambia\'s wildlife on a budget.'
-      }
-    ];
+    function displayAllHotels() {
+      Object.keys(hotels).forEach(region => {
+        const gridId = getGridId(region);
+        const grid = document.getElementById(gridId);
+        if (grid) {
+          grid.innerHTML = '';
+          hotels[region].forEach(hotel => {
+            grid.innerHTML += createHotelCard(hotel);
+          });
+        }
+      });
+    }
 
-    let filteredHotels = [...hotels];
-    let currentFilter = 'all';
+    function getGridId(region) {
+      const mapping = {
+        lusaka: 'lusakaGrid',
+        livingstone: 'livingstoneGrid',
+        'south-luangwa': 'southLuangwaGrid',
+        'lower-zambezi': 'lowerZambeziGrid',
+        kafue: 'kafueGrid',
+        siavonga: 'siavongaGrid',
+        samfya: 'samfyaGrid'
+      };
+      return mapping[region];
+    }
 
-    function displayHotels(hotelList) {
-      const grid = document.getElementById('hotelGrid');
-      grid.innerHTML = '';
-
-      hotelList.forEach((hotel, index) => {
-        const card = document.createElement('div');
-        card.className = 'hotel-card';
-        card.innerHTML = `
-          <div class="hotel-image">
-            <img src="${hotel.images[0]}" alt="${hotel.name}">
-            <div class="hotel-badge">${hotel.category.charAt(0).toUpperCase() + hotel.category.slice(1)}</div>
+    function createHotelCard(hotel) {
+      return `
+        <div class="hotel-card" data-region="${hotel.region}" data-price="${hotel.priceRange}" data-name="${hotel.name.toLowerCase()}">
+          <div style="position: relative;">
+            <img src="${hotel.image}" alt="${hotel.name}" class="hotel-image">
             <div class="hotel-rating">⭐ ${hotel.rating}</div>
           </div>
           <div class="hotel-content">
+            <div class="hotel-category">${hotel.category}</div>
             <h3 class="hotel-name">${hotel.name}</h3>
-            <div class="hotel-location">📍 ${hotel.location}</div>
+            <p class="hotel-location">
+              <i class="fas fa-map-marker-alt"></i> ${hotel.location}
+            </p>
             <p class="hotel-description">${hotel.description}</p>
             <div class="hotel-amenities">
-              ${hotel.amenities.slice(0, 3).map(a => `<span class="amenity-tag">${a}</span>`).join('')}
+              ${hotel.amenities.slice(0, 3).map(a => `<span class="amenity">${a}</span>`).join('')}
             </div>
-            <div class="hotel-price">
-              <div class="price-info">
-                <span class="price-label">From</span>
-                <span class="price-value">$${hotel.price}</span>
-              </div>
-              <button class="book-btn" onclick="openModal(${hotel.id})">View Details</button>
+            <div class="hotel-price">${hotel.price}</div>
+            <div class="hotel-actions">
+              <button class="view-details-btn" onclick="openBookingModal(${hotel.id})">View Details</button>
+              <button class="book-btn" onclick="openBookingModal(${hotel.id})">Book Now</button>
             </div>
           </div>
-        `;
-        grid.appendChild(card);
-
-        setTimeout(() => {
-          card.classList.add('show');
-        }, index * 100);
-      });
-    }
-
-    function filterHotels(category) {
-      currentFilter = category;
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      if (category === 'all') {
-        filteredHotels = [...hotels];
-      } else {
-        filteredHotels = hotels.filter(h => h.category === category);
-      }
-
-      displayHotels(filteredHotels);
-    }
-
-    function sortHotels() {
-      const sortValue = document.getElementById('sortSelect').value;
-
-      if (sortValue === 'price-low') {
-        filteredHotels.sort((a, b) => a.price - b.price);
-      } else if (sortValue === 'price-high') {
-        filteredHotels.sort((a, b) => b.price - a.price);
-      } else if (sortValue === 'rating') {
-        filteredHotels.sort((a, b) => b.rating - a.rating);
-      }
-
-      displayHotels(filteredHotels);
+        </div>
+      `;
     }
 
     function searchHotels() {
-      const checkin = document.getElementById('checkin').value;
-      const checkout = document.getElementById('checkout').value;
-      const guests = document.getElementById('guests').value;
-      const location = document.getElementById('location').value;
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.hotel-card');
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name');
+        card.style.display = name.includes(searchTerm) ? 'flex' : 'none';
+      });
+    }
 
-      if (!checkin || !checkout) {
-        alert('Please select check-in and check-out dates');
-        return;
+    function filterByRegion() {
+      const region = document.getElementById('regionFilter').value;
+      const cards = document.querySelectorAll('.hotel-card');
+      cards.forEach(card => {
+        card.style.display = region === '' || card.getAttribute('data-region') === region ? 'flex' : 'none';
+      });
+    }
+
+    function filterByPrice() {
+      const priceRange = document.getElementById('priceFilter').value;
+      const cards = document.querySelectorAll('.hotel-card');
+      cards.forEach(card => {
+        card.style.display = priceRange === '' || card.getAttribute('data-price') === priceRange ? 'flex' : 'none';
+      });
+    }
+
+    function resetFilters() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('regionFilter').value = '';
+      document.getElementById('priceFilter').value = '';
+      displayAllHotels();
+    }
+
+    function openBookingModal(hotelId) {
+      const allHotels = [].concat(...Object.values(hotels));
+      const hotel = allHotels.find(h => h.id === hotelId);
+      
+      if (hotel) {
+        document.getElementById('modalHotelName').textContent = hotel.name;
+        document.getElementById('modalHotelLocation').textContent = hotel.location;
+        document.getElementById('modalHotelImage').src = hotel.image;
+        document.getElementById('modalDescription').textContent = hotel.description;
+        document.getElementById('modalPricing').textContent = hotel.price;
+        
+        document.getElementById('modalAmenities').innerHTML = hotel.amenities.map(a => `<li>${a}</li>`).join('');
+        document.getElementById('modalRoomTypes').innerHTML = hotel.roomTypes.map(r => `<li>${r}</li>`).join('');
+        
+        const roomSelect = document.getElementById('roomType');
+        roomSelect.innerHTML = '<option value="">Select room type</option>';
+        hotel.roomTypes.forEach(room => {
+          roomSelect.innerHTML += `<option value="${room}">${room}</option>`;
+        });
+        
+        document.getElementById('bookingModal').style.display = 'block';
       }
-
-      if (location === 'All Locations') {
-        filteredHotels = [...hotels];
-      } else {
-        filteredHotels = hotels.filter(h => h.location === location);
-      }
-
-      displayHotels(filteredHotels);
-      alert(`Search Results: ${filteredHotels.length} hotels found for ${guests}`);
     }
 
-    function openModal(hotelId) {
-      const hotel = hotels.find(h => h.id === hotelId);
-      if (!hotel) return;
-
-      document.getElementById('modalHotelName').textContent = hotel.name;
-      document.getElementById('modalLocation').textContent = hotel.location;
-      document.getElementById('modalDescription').textContent = hotel.fullDescription;
-      document.getElementById('modalPrice').textContent = `$${hotel.price} per night`;
-      document.getElementById('modalRating').textContent = `⭐ ${hotel.rating}/5.0 Rating`;
-
-      const gallery = document.getElementById('modalGallery');
-      gallery.innerHTML = hotel.images.map(img => `<img src="${img}" alt="${hotel.name}">`).join('');
-
-      const amenities = document.getElementById('modalAmenities');
-      amenities.innerHTML = hotel.amenities.map(a => `<div class="feature-item">✓ ${a}</div>`).join('');
-
-      document.getElementById('hotelModal').style.display = 'block';
+    function closeBookingModal() {
+      document.getElementById('bookingModal').style.display = 'none';
     }
 
-    function closeModal() {
-      document.getElementById('hotelModal').style.display = 'none';
-    }
-
-    function submitBooking() {
-      alert('Thank you for your booking! We will contact you shortly to confirm your reservation.');
-      closeModal();
+    function submitBooking(event) {
+      event.preventDefault();
+      alert('Thank you for your booking inquiry! We will contact you shortly to confirm your reservation.');
+      closeBookingModal();
     }
 
     window.onclick = function(event) {
-      const modal = document.getElementById('hotelModal');
-      if (event.target == modal) {
+      const modal = document.getElementById('bookingModal');
+      if (event.target === modal) {
         modal.style.display = 'none';
       }
     }
-
-    window.addEventListener('scroll', function() {
-      const cards = document.querySelectorAll('.hotel-card');
-      cards.forEach(card => {
-        const position = card.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (position < screenHeight - 100) {
-          card.classList.add('show');
-        }
-      });
-    });
-
-    displayHotels(hotels);
   </script>
-
-<!-- WHATSAPP -->
-<a href="https://wa.me/260771464228" class="whatsapp">
-  💬
-</a>
-
-<!-- BOOK NOW -->
-<a href="packages.html" class="book-now-btn">
-  Book<br>Now
-</a>
-
 </body>
 </html>

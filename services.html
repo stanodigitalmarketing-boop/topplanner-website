@@ -10,119 +10,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-body { font-family: 'Poppins', sans-serif; background: #fff; color: #222; overflow-x: hidden; }
-img { max-width: 100%; display: block; }
-a { text-decoration: none; }
-section { padding: 100px 8%; }
 
-#preloader { position: fixed; width: 100%; height: 100vh; background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999; }
-.loader { width: 80px; height: 80px; border-radius: 50%; border: 8px solid rgba(255, 255, 255, 0.2); border-top: 8px solid gold; animation: spin 1s linear infinite; }
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-header { position: fixed; width: 100%; top: 0; left: 0; z-index: 999; padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); }
-.logo { display: flex; align-items: center; gap: 12px; }
-.logo h2 { color: #fff; font-size: 22px; font-weight: 700; }
-.logo h2 span { color: gold; }
-nav ul { display: flex; gap: 28px; list-style: none; }
-nav ul li a { color: #fff; font-size: 15px; transition: 0.4s; font-weight: 500; }
-nav ul li a:hover, nav ul li a.active { color: gold; }
-.header-btns { display: flex; gap: 15px; }
-.btn-header { padding: 13px 28px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.4s; font-size: 14px; }
-.gold-btn { background: gold; color: #000; }
-.gold-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
-.white-btn { background: #fff; color: #000; }
-.white-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4); }
-
-.hero { width: 100%; height: 80vh; position: relative; overflow: hidden; margin-top: 0; }
-.hero::before { content: ''; position: absolute; width: 100%; height: 100%; background: url('https://lh3.googleusercontent.com/p/AF1QipMyODPTAd63HV18RcxoF5UQeAEgJFVOUREBq38n=w1200') center/cover; z-index: -1; }
-.hero-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); top: 0; left: 0; }
-.hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; text-align: center; color: #fff; }
-.hero-content h1 { font-size: 75px; line-height: 1.2; margin-bottom: 25px; animation: slideUp 1s ease; }
-.hero-content p { font-size: 20px; max-width: 900px; margin: auto; margin-bottom: 40px; line-height: 1.8; animation: slideUp 1.2s ease; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
-
-.section-title { text-align: center; margin-bottom: 60px; }
-.section-title h2 { font-size: 50px; margin-bottom: 15px; color: #222; }
-.section-title p { font-size: 18px; color: #666; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-
-.service-card { background: #fff; border-radius: 15px; padding: 40px 30px; text-align: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); transition: 0.4s; cursor: pointer; }
-.service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); }
-
-.service-icon { font-size: 50px; color: gold; margin-bottom: 20px; }
-.service-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 15px; color: #222; }
-.service-card p { color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
-
-.service-btn { padding: 12px 30px; background: #000; color: #fff; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-.service-btn:hover { background: gold; color: #000; }
-
-.why-section { background: #f9f9f9; }
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 40px; }
-.why-item { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); }
-.why-item i { font-size: 40px; color: gold; margin-bottom: 15px; }
-.why-item h4 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #222; }
-.why-item p { color: #666; line-height: 1.6; font-size: 14px; }
-
-.cta-section { background: linear-gradient(135deg, #000, #1a1a1a); color: #fff; padding: 60px 8%; text-align: center; }
-.cta-section h2 { font-size: 42px; margin-bottom: 20px; }
-.cta-section p { font-size: 18px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
-.cta-btn { padding: 15px 50px; background: gold; color: #000; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 16px; transition: 0.3s; }
-.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
-
-footer { background: #000; color: #fff; padding: 50px 8%; text-align: center; }
-.footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px; }
-.footer-section h3 { color: gold; margin-bottom: 15px; font-size: 18px; }
-.footer-section p, .footer-section a { color: #ccc; font-size: 14px; line-height: 1.8; transition: 0.3s; }
-.footer-section .contact-info { margin-top: 10px; font-size: 13px; }
-.footer-section a:hover { color: gold; }
-.footer-bottom { border-top: 1px solid #333; padding-top: 30px; text-align: center; }
-
-@media (max-width: 768px) {
-  header { padding: 12px 4%; }
-  nav ul { gap: 15px; }
-  nav ul li a { font-size: 13px; }
-  .hero-content h1 { font-size: 40px; }
-  .hero-content p { font-size: 16px; }
-  section { padding: 60px 4%; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-  .section-title h2 { font-size: 35px; }
-  .cta-section { padding: 40px 4%; }
-  .cta-section h2 { font-size: 32px; }
-}
-
-@media (max-width: 480px) {
-  .hero-content h1 { font-size: 28px; }
-  .hero-content p { font-size: 14px; }
-  nav ul { gap: 10px; font-size: 12px; }
-  .logo h2 { font-size: 18px; }
-  .grid { grid-template-columns: 1fr; }
-  .service-card { padding: 25px; }
-}
-</style>
-</head>
+<link rel="stylesheet" href="css/style.css">
+    </head>
 
 <body>
 
 <!-- HEADER -->
 <header>
-<div class="logo">Top Travel Planners and Tours Zambia</div>
-<nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="destinations.html">Destinations</a></li>
-<li><a href="packages.html">Packages</a></li>
-<li><a href="safaris.html">Safaris</a></li>
-<li><a href="flights.html">Flights</a></li>
-<li><a href="hotels.html">Hotels</a></li>
-<li><a href="services.html" class="active">Services</a></li>
-<li><a href="membership.html">Membership</a></li>
-<li><a href="blog.html">Blog</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+  <div class="logo">
+    <h2>Top Travel Planners <span>and Tours Zambia</span></h2>
+  </div>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="safaris.html">Safaris</a></li>
+      <li><a href="flights.html">Flights</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
 <!-- HERO -->
@@ -243,30 +158,44 @@ With a focus on quality, reliability, and customer satisfaction, we have built a
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-content">
-    <div class="footer-section">
+  <div class="footer-grid">
+    <div class="footer-box">
       <h3>Top Travel Planners and Tours Zambia</h3>
-      <p>Premium travel services and experiences across Africa and worldwide. We combine local expertise with global standards to deliver exceptional journeys tailored to your preferences.</p>
-    </div>
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <a href="index.html">Home</a><br>
-      <a href="destinations.html">Destinations</a><br>
-      <a href="packages.html">Packages</a><br>
-      <a href="blog.html">Blog</a>
-    </div>
-    <div class="footer-section">
-      <h3>Services</h3>
-      <a href="flights.html">Flight Booking</a><br>
-      <a href="hotels.html">Hotel Booking</a><br>
-      <a href="safaris.html">Safari Experiences</a><br>
-      <a href="contact.html">Travel Planning</a>
-    </div>
-    <div class="footer-section">
-      <h3>Contact Info</h3>
+      <p>Luxury tourism and premium travel experiences across Africa and worldwide.</p>
+      <p><strong>Email:</strong> res.toptravelplannerszambia@gmail.com</p>
       <p><strong>Phone:</strong> +260 771 464 228</p>
-      <p><strong>Email:</strong> res.toptravelplanneszambia@gmail.com</p>
-      <p><strong>Location:</strong> Lusaka, Zambia</p>
+    </div>
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="safaris.html">Safaris</a></li>
+        <li><a href="flights.html">Flights</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="membership.html">Membership</a></li>
+      </ul>
+    </div>
+    <div class="footer-box">
+      <h3>Services</h3>
+      <ul>
+        <li><a href="flights.html">Flight Booking</a></li>
+        <li><a href="hotels.html">Hotel Booking</a></li>
+        <li><a href="services.html">Visa Assistance</a></li>
+        <li><a href="safaris.html">Luxury Tours</a></li>
+      </ul>
+    </div>
+    <div class="footer-box">
+      <h3>Social Media</h3>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">TikTok</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="https://wa.me/260771464228" target="_blank">WhatsApp</a></li>
+      </ul>
     </div>
   </div>
   <div class="footer-bottom">
@@ -274,5 +203,9 @@ With a focus on quality, reliability, and customer satisfaction, we have built a
   </div>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>
+
+
+
