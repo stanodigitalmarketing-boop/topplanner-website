@@ -729,6 +729,14 @@ margin:80px 5%;
 </style>
 
 </head>
+<script>
+const menuIcon = document.querySelector(".menu-icon");
+const nav = document.querySelector("nav");
+
+menuIcon.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
+</script>
 
 <body>
 

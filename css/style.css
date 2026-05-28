@@ -1801,3 +1801,26 @@ width:180px;
 height:auto;
 object-fit:contain;
 }
+@media(max-width:991px){
+
+nav{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#000;
+display:none;
+flex-direction:column;
+padding:20px 0;
+}
+
+nav.active{
+display:flex;
+}
+
+nav ul{
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
+}
